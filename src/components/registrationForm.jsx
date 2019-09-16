@@ -1,6 +1,7 @@
 import React from "react";
 import Form from "./common/form";
-import Joi from "@hapi/joi";
+import Joi from '@hapi/joi';
+import {Divider, Typography} from '@material-ui/core';
 
 class RegistrationForm extends Form {
   state = {
@@ -28,7 +29,18 @@ class RegistrationForm extends Form {
   render() {
     return (
       <div>
-        <h1>Registration Form</h1>
+        <Typography
+          align="center"
+          variant="h4"
+          color="primary"
+        >Signup
+        </Typography>
+        <Divider
+         variant="Fullwidth"
+        
+         /><br />
+
+        
         <form onSubmit={this.handleSubmit}>
           {this.renderInput("name", "Name")}
           <br />

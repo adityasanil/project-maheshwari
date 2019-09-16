@@ -1,16 +1,25 @@
 import React from "react";
+import TextField from '@material-ui/core/TextField';
+
+
+
+
+
 
 const Input = ({ name, label, value, onChange, error, type }) => {
   return (
     <div className="">
-      <label htmlFor={name}>{label}: </label>
-      <input
+      <TextField
         value={value}
         onChange={onChange}
         type={type}
         id={name}
         name={name}
         className=""
+        //placeholder={name}
+        variant="outlined"
+        margin = "dense"
+        label={label}
       />
       {error && <div>{error}</div>}
     </div>

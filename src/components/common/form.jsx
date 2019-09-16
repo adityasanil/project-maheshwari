@@ -1,6 +1,8 @@
 import React, { Component } from "react";
-import Joi from "@hapi/joi";
+import Joi from '@hapi/joi';
 import Input from "./input";
+import Button from '@material-ui/core/Button';
+
 
 class Form extends Component {
   state = {
@@ -19,21 +21,36 @@ class Form extends Component {
   };
 
   validateForm = () => {
-    const options = { abortEarly: false };
-    const { error } = Joi.validate(this.state.data, this.schema, options);
-    if (!error) return null;
-
     const errors = {};
-    for (let item of error.details) errors[item.path[0]] = item.message;
-    return errors;
+    const { data } = this.state;
+    if (data.name.trim() === "") errors.name = "Name is required.";
+    if (data.email.trim() === "") errors.email = "Email is required.";
+    if (data.contact.trim() === "") errors.contact = "Contact is required.";
+    return Object.keys(errors).length === 0 ? null : errors;
+    // const options = { abortEarly: false };
+    // const { error } = Joi.validate(this.state.data, this.schema, options);
+    // if (!error) return null;
+
+    // const errors = {};
+    // for (let item of error.details) errors[item.path[0]] = item.message;
+    // return errors;
   };
 
   validateIndividualField = input => {
-    const obj = { [input.name]: input.value };
-    const schema = { [input.name]: this.schema[input.name] };
-    const { error } = Joi.validate(obj, schema);
+    if (input.name === "name") {
+      if (input.value.trim() === "") return "Name is required";
+    }
+    if (input.name === "email") {
+      if (input.value.trim() === "") return "Email is required";
+    }
+    if (input.name === "contact") {
+      if (input.value.trim() === "") return "Contact is required";
+    }
+    // const obj = { [input.name]: input.value };
+    // const schema = { [input.name]: this.schema[input.name] };
+    // const { error } = Joi.validate(obj, schema);
 
-    return error ? error.details[0].message : null;
+    // return error ? error.details[0].message : null;
   };
 
   // handleChange = ({ currentTarget: input }) => {
@@ -65,9 +82,16 @@ class Form extends Component {
 
   renderButton(label) {
     return (
-      <button disabled={this.validateForm()} className="">
+      //<button disabled={this.validateForm()} className="">
+      //{label}
+      //</button>
+      <Button
+        type="submit"
+        color="primary"
+        variant="outlined">
         {label}
-      </button>
+      </Button>
+
     );
   }
 }
