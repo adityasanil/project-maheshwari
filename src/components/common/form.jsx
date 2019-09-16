@@ -1,8 +1,6 @@
 import React, { Component } from "react";
-import Joi from '@hapi/joi';
 import Input from "./input";
-import Button from '@material-ui/core/Button';
-
+import Button from "@material-ui/core/Button";
 
 class Form extends Component {
   state = {
@@ -23,7 +21,8 @@ class Form extends Component {
   validateForm = () => {
     const errors = {};
     const { data } = this.state;
-    if (data.name.trim() === "") errors.name = "Name is required.";
+    if (data.firstName.trim() === "")
+      errors.firstName = "First name is required.";
     if (data.email.trim() === "") errors.email = "Email is required.";
     if (data.contact.trim() === "") errors.contact = "Contact is required.";
     return Object.keys(errors).length === 0 ? null : errors;
@@ -37,8 +36,8 @@ class Form extends Component {
   };
 
   validateIndividualField = input => {
-    if (input.name === "name") {
-      if (input.value.trim() === "") return "Name is required";
+    if (input.name === "firstName") {
+      if (input.value.trim() === "") return "First name is required";
     }
     if (input.name === "email") {
       if (input.value.trim() === "") return "Email is required";
@@ -49,7 +48,6 @@ class Form extends Component {
     // const obj = { [input.name]: input.value };
     // const schema = { [input.name]: this.schema[input.name] };
     // const { error } = Joi.validate(obj, schema);
-
     // return error ? error.details[0].message : null;
   };
 
@@ -82,17 +80,14 @@ class Form extends Component {
 
   renderButton(label) {
     return (
-      //<button disabled={this.validateForm()} className="">
-      //{label}
-      //</button>
-      <Button
-        type="submit"
-        color="primary"
-        variant="outlined">
+      <Button type="submit" color="primary" variant="outlined">
         {label}
       </Button>
-
     );
+  }
+
+  renderParagraph(paragraphBody) {
+    return <span>{paragraphBody}</span>;
   }
 }
 

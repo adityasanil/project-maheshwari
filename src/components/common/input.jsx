@@ -1,10 +1,5 @@
 import React from "react";
-import TextField from '@material-ui/core/TextField';
-
-
-
-
-
+import TextField from "@material-ui/core/TextField";
 
 const Input = ({ name, label, value, onChange, error, type }) => {
   return (
@@ -15,10 +10,9 @@ const Input = ({ name, label, value, onChange, error, type }) => {
         type={type}
         id={name}
         name={name}
-        className=""
-        //placeholder={name}
+        // placeholder={name}
         variant="outlined"
-        margin = "dense"
+        margin="dense"
         label={label}
       />
       {error && <div>{error}</div>}
