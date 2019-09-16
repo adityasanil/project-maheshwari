@@ -1,87 +1,42 @@
-import React, { Component } from "react";
-import Input from "./common/input";
+import React from "react";
+import Form from "./common/form";
+import Joi from "@hapi/joi";
 
-class RegistrationForm extends Component {
+class RegistrationForm extends Form {
   state = {
     data: { name: "", email: "", contact: "" },
     errors: {}
   };
 
-  validateForm = () => {
-    const errors = {};
-    const { data } = this.state;
-    if (data.name.trim() === "") errors.name = "Name is required.";
-    if (data.email.trim() === "") errors.email = "Email is required.";
-    if (data.contact.trim() === "") errors.contact = "Contact is required.";
-    return Object.keys(errors).length === 0 ? null : errors;
+  schema = {
+    name: Joi.string()
+      .required()
+      .label("Name"),
+    email: Joi.string()
+      .required()
+      .label("Email"),
+    contact: Joi.string()
+      .required()
+      .label("Contact")
   };
 
-  handleSubmit = e => {
-    e.preventDefault();
-    const errors = this.validateForm();
-    console.log(errors);
-
-    this.setState({ errors: errors || {} });
-    if (errors) return;
+  doSubmit = () => {
+    //Call server
     console.log("Submitted");
   };
 
-  validateIndividualField = input => {
-    if (input.name === "name") {
-      if (input.value.trim() === "") return "Name is required";
-    }
-    if (input.name === "email") {
-      if (input.value.trim() === "") return "Email is required";
-    }
-    if (input.name === "contact") {
-      if (input.value.trim() === "") return "Contact is required";
-    }
-  };
-
-  // handleChange = ({ currentTarget: input }) => {
-  handleChange = e => {
-    const errors = { ...this.state.errors };
-    const errorMessage = this.validateIndividualField(e.currentTarget);
-    if (errorMessage) errors[e.currentTarget.name] = errorMessage;
-    else delete errors[e.currentTarget.name];
-
-    const data = { ...this.state.data };
-    data[e.currentTarget.name] = e.currentTarget.value;
-    this.setState({ data, errors });
-  };
-
   render() {
-    const { data, errors } = this.state;
     return (
       <div>
         <h1>Registration Form</h1>
         <form onSubmit={this.handleSubmit}>
-          <Input
-            name="name"
-            label="Name"
-            value={data.name}
-            onChange={this.handleChange}
-            error={errors.name}
-          />
+          {this.renderInput("name", "Name")}
           <br />
-          <Input
-            name="email"
-            label="Email"
-            value={data.email}
-            onChange={this.handleChange}
-            error={errors.email}
-          />
+          {this.renderInput("email", "Email", "password")}
           <br />
-          <Input
-            name="contact"
-            label="Contact"
-            value={data.contact}
-            onChange={this.handleChange}
-            error={errors.contact}
-          />
-          <button type="submit" name="submit" className="">
-            Submit
-          </button>
+          {this.renderInput("contact", "Contact")}
+          <br />
+          {this.renderButton("Submit")}
         </form>
       </div>
     );
