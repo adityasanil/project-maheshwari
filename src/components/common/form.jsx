@@ -80,7 +80,7 @@ class Form extends Component {
 
   renderButton(label) {
     return (
-      <Button type="submit" color="primary" variant="outlined">
+      <Button type="submit" color="primary" variant="outlined" onClick={null}>
         {label}
       </Button>
     );
