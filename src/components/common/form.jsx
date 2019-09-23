@@ -73,7 +73,7 @@ class Form extends Component {
   }
 
   renderParagraph(paragraphBody) {
-    return <p>{paragraphBody}</p>;
+    return <span>{paragraphBody}</span>;
   }
 }
 

@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { fade, makeStyles } from "@material-ui/core/styles";
+import brandLogo from "../assets/images/logo.png";
+import { makeStyles } from "@material-ui/core/styles";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 import IconButton from "@material-ui/core/IconButton";
@@ -20,6 +21,11 @@ const useStyles = makeStyles(theme => ({
     margin: theme.spacing(1),
     color: "white"
   },
+  brandLogo: {
+    width: "100%",
+    maxWidth: "35px",
+    height: "40px"
+  },
   loginButtonInMenu: {
     margin: theme.spacing(1),
     color: "black !important"
@@ -31,10 +37,6 @@ const useStyles = makeStyles(theme => ({
   },
   menuButton: {
     marginRight: theme.spacing(2)
-  },
-  removeTextDecologinButtonInMenu: {
-    textDecoration: "none",
-    color: "black"
   },
   removeTextDeco: {
     textDecoration: "none",
@@ -87,8 +89,12 @@ export default function PrimarySearchAppBar() {
       open={isMobileMenuOpen}
       onClose={handleMobileMenuClose}
     >
-      <Button className={classes.loginButtonInMenu} variant="contained">
-        <Link to="/login" className={classes.removeTextDecologinButtonInMenu}>
+      <Button
+        className={classes.loginButtonInMenu}
+        color="secondary"
+        variant="contained"
+      >
+        <Link to="/login" className={classes.removeTextDeco}>
           Log in
         </Link>
       </Button>
@@ -101,15 +107,15 @@ export default function PrimarySearchAppBar() {
     </Menu>
   );
 
-  // const logoLocation = "../assets/images/logo.png";
-
   return (
     <div className={classes.grow}>
       <AppBar position="static" className={classes.appBarColor}>
         <Toolbar>
-          {/* <IconButton>
-            <img src="./logo.png" alt="logo" />
-          </IconButton> */}
+          <IconButton>
+            <Link to="/">
+              <img src={brandLogo} alt="logo" className={classes.brandLogo} />
+            </Link>
+          </IconButton>
 
           <Typography className={classes.title} variant="h6" noWrap>
             <Link to="/" className={classes.removeTextDeco}>

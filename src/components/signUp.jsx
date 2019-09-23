@@ -144,7 +144,7 @@ class Signup extends Form {
               <br />
               {this.renderInput("residentialLandline", "Residential Landline")}
               <br />
-              {this.renderInput("area", "Area")}
+              {this.renderInput("area", "Area", "Choose your area")}
               <br />
               {this.renderInput("married", "Married")}
               <br />
