@@ -4,6 +4,7 @@ import Home from "./components/home";
 import Signup from "./components/signUp";
 import Navbar from "./components/navbar";
 import Login from "./components/login";
+import ForgotPassword from "./components/forgotPassword";
 
 class App extends Component {
   render() {
@@ -12,6 +13,7 @@ class App extends Component {
         <Navbar />
         <div className="content">
           <Switch>
+            <Route path="/forgotPassword" component={ForgotPassword} />
             <Route path="/login" component={Login} />
             <Route path="/signup" component={Signup} />
             <Route path="/" component={Home} />

@@ -66,14 +66,14 @@ class Form extends Component {
 
   renderButton(label, color, variant) {
     return (
-      <Button type="submit" color={color} variant={variant} onClick={null}>
+      <Button type="submit" color={color} variant={variant}>
         {label}
       </Button>
     );
   }
 
   renderParagraph(paragraphBody) {
-    return <span>{paragraphBody}</span>;
+    return <p>{paragraphBody}</p>;
   }
 }
 

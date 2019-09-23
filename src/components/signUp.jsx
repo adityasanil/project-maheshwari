@@ -40,7 +40,70 @@ class Signup extends Form {
       .label("First name"),
     middleName: Joi.string()
       .required()
-      .label("Middle name")
+      .label("Middle name"),
+    lastName: Joi.string()
+      .required()
+      .label("Last name"),
+    contact: Joi.string()
+      .required()
+      .label("Contact numeb"),
+    email: Joi.string()
+      .required()
+      .label("Email Id name"),
+    programmeApplied: Joi.string()
+      .required()
+      .label("Program"),
+    mobileNumber: Joi.string()
+      .required()
+      .label("Contact name"),
+    dob: Joi.string()
+      .required()
+      .label("Date of birth"),
+    lifeMembershipNumber: Joi.string()
+      .required()
+      .label("Life membership number"),
+    residentialAddress: Joi.string()
+      .required()
+      .label("Residential Address"),
+    residentialLandline: Joi.string()
+      .required()
+      .label("Residential Landline"),
+    area: Joi.string()
+      .required()
+      .label("Area"),
+    married: Joi.string()
+      .required()
+      .label("Marital Status"),
+    bloodGroup: Joi.string()
+      .required()
+      .label("Blood Group"),
+    companyName: Joi.string()
+      .required()
+      .label("Company name"),
+    product: Joi.string()
+      .required()
+      .label("Product/Service"),
+    comapanyWebsite: Joi.string()
+      .required()
+      .label("Comapany Website"),
+    landlineNumber: Joi.string()
+      .required()
+      .label("Landline number"),
+    businessIncorporationDate: Joi.string()
+      .required()
+      .label("Business Incorporation Date"),
+    facebookLink: Joi.string()
+      .required()
+      .label("Facebook Link"),
+    linkedinLink: Joi.string()
+      .required()
+      .label("Linkedin Link"),
+    instagramLink: Joi.string()
+      .required()
+      .label("Instagram Link"),
+    twitterLink: Joi.string()
+      .required()
+      .label("Twitter Link")
   };
 
   doSubmit = () => {
