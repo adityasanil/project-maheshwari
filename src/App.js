@@ -1,18 +1,22 @@
 import React, { Component } from "react";
-import RegistrationForm from "./components/registrationForm";
-import { Grid } from "@material-ui/core";
+import { Route, Switch } from "react-router-dom";
+import Home from "./components/home";
+import Signup from "./components/signUp";
 import Navbar from "./components/navbar";
+import Login from "./components/login";
 
 class App extends Component {
   render() {
     return (
       <React.Fragment>
         <Navbar />
-        <Grid container spacing={0} alignItems="center" justify="center">
-          <Grid item xs={5}>
-            <RegistrationForm />
-          </Grid>
-        </Grid>
+        <div className="content">
+          <Switch>
+            <Route path="/login" component={Login} />
+            <Route path="/signup" component={Signup} />
+            <Route path="/" component={Home} />
+          </Switch>
+        </div>
       </React.Fragment>
     );
   }

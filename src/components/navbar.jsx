@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import { fade, makeStyles } from "@material-ui/core/styles";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
@@ -21,7 +22,7 @@ const useStyles = makeStyles(theme => ({
   },
   loginButtonInMenu: {
     margin: theme.spacing(1),
-    color: "black"
+    color: "black !important"
   },
   signupButton: {
     margin: theme.spacing(1),
@@ -31,45 +32,18 @@ const useStyles = makeStyles(theme => ({
   menuButton: {
     marginRight: theme.spacing(2)
   },
+  removeTextDecologinButtonInMenu: {
+    textDecoration: "none",
+    color: "black"
+  },
+  removeTextDeco: {
+    textDecoration: "none",
+    color: "white"
+  },
   title: {
     display: "none",
     [theme.breakpoints.up("sm")]: {
       display: "block"
-    }
-  },
-  search: {
-    position: "relative",
-    borderRadius: theme.shape.borderRadius,
-    backgroundColor: fade(theme.palette.common.white, 0.15),
-    "&:hover": {
-      backgroundColor: fade(theme.palette.common.white, 0.25)
-    },
-    marginRight: theme.spacing(2),
-    marginLeft: 0,
-    width: "100%",
-    [theme.breakpoints.up("sm")]: {
-      marginLeft: theme.spacing(3),
-      width: "auto"
-    }
-  },
-  searchIcon: {
-    width: theme.spacing(7),
-    height: "100%",
-    position: "absolute",
-    pointerEvents: "none",
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "center"
-  },
-  inputRoot: {
-    color: "inherit"
-  },
-  inputInput: {
-    padding: theme.spacing(1, 1, 1, 7),
-    transition: theme.transitions.create("width"),
-    width: "100%",
-    [theme.breakpoints.up("md")]: {
-      width: 200
     }
   },
   sectionDesktop: {
@@ -114,14 +88,19 @@ export default function PrimarySearchAppBar() {
       onClose={handleMobileMenuClose}
     >
       <Button className={classes.loginButtonInMenu} variant="contained">
-        Sign up
+        <Link to="/login" className={classes.removeTextDecologinButtonInMenu}>
+          Log in
+        </Link>
       </Button>
       <br />
       <Button className={classes.signupButton} variant="contained">
-        Sign up
+        <Link to="/signup" className={classes.removeTextDeco}>
+          Sign up
+        </Link>
       </Button>
     </Menu>
   );
+
   // const logoLocation = "../assets/images/logo.png";
 
   return (
@@ -133,13 +112,21 @@ export default function PrimarySearchAppBar() {
           </IconButton> */}
 
           <Typography className={classes.title} variant="h6" noWrap>
-            Maheshwari Samaj
+            <Link to="/" className={classes.removeTextDeco}>
+              Maheshwari Samaj
+            </Link>
           </Typography>
           <div className={classes.grow} />
           <div className={classes.sectionDesktop}>
-            <Button className={classes.loginButton}>Log in</Button>
+            <Button className={classes.loginButton}>
+              <Link to="/login" className={classes.removeTextDeco}>
+                Log in
+              </Link>
+            </Button>
             <Button className={classes.signupButton} variant="contained">
-              Sign up
+              <Link to="/signup" className={classes.removeTextDeco}>
+                Sign up
+              </Link>
             </Button>
           </div>
           <div className={classes.sectionMobile}>

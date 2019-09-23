@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import Input from "./input";
 import Button from "@material-ui/core/Button";
+import Joi from "joi-browser";
 
 class Form extends Component {
   state = {
@@ -19,47 +20,32 @@ class Form extends Component {
   };
 
   validateForm = () => {
+    const options = { abortEarly: false };
+    const { error } = Joi.validate(this.state.data, this.schema, options);
+    if (!error) return null;
     const errors = {};
-    const { data } = this.state;
-    if (data.firstName.trim() === "")
-      errors.firstName = "First name is required.";
-    if (data.email.trim() === "") errors.email = "Email is required.";
-    if (data.contact.trim() === "") errors.contact = "Contact is required.";
-    return Object.keys(errors).length === 0 ? null : errors;
-    // const options = { abortEarly: false };
-    // const { error } = Joi.validate(this.state.data, this.schema, options);
-    // if (!error) return null;
-
-    // const errors = {};
-    // for (let item of error.details) errors[item.path[0]] = item.message;
-    // return errors;
+    // eslint-disable-next-line no-unused-vars
+    for (let item of error.details) errors[item.path[0]] = item.message;
+    return errors;
   };
 
   validateIndividualField = input => {
-    if (input.name === "firstName") {
-      if (input.value.trim() === "") return "First name is required";
-    }
-    if (input.name === "email") {
-      if (input.value.trim() === "") return "Email is required";
-    }
-    if (input.name === "contact") {
-      if (input.value.trim() === "") return "Contact is required";
-    }
-    // const obj = { [input.name]: input.value };
-    // const schema = { [input.name]: this.schema[input.name] };
-    // const { error } = Joi.validate(obj, schema);
-    // return error ? error.details[0].message : null;
+    const obj = { [input.name]: input.value };
+    const schema = { [input.name]: this.schema[input.name] };
+    const { error } = Joi.validate(obj, schema);
+    return error ? error.details[0].message : null;
   };
 
   // handleChange = ({ currentTarget: input }) => {
   handleChange = e => {
+    const data = { ...this.state.data };
+    data[e.currentTarget.name] = e.currentTarget.value;
+
     const errors = { ...this.state.errors };
     const errorMessage = this.validateIndividualField(e.currentTarget);
     if (errorMessage) errors[e.currentTarget.name] = errorMessage;
     else delete errors[e.currentTarget.name];
 
-    const data = { ...this.state.data };
-    data[e.currentTarget.name] = e.currentTarget.value;
     this.setState({ data, errors });
   };
 
@@ -78,9 +64,9 @@ class Form extends Component {
     );
   }
 
-  renderButton(label) {
+  renderButton(label, color, variant) {
     return (
-      <Button type="submit" color="primary" variant="outlined" onClick={null}>
+      <Button type="submit" color={color} variant={variant} onClick={null}>
         {label}
       </Button>
     );

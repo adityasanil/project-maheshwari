@@ -10,8 +10,7 @@ const Input = ({ name, label, value, onChange, error, type }) => {
         type={type}
         id={name}
         name={name}
-        // placeholder={name}
-        variant="outlined"
+        variant="standard"
         margin="dense"
         label={label}
       />
