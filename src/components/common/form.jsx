@@ -3,7 +3,7 @@ import Input from "./input";
 import Selection from "./select";
 import Button from "@material-ui/core/Button";
 import Joi from "joi-browser";
-import Date from './date'
+import Date from "./date";
 
 class Form extends Component {
   state = {
@@ -94,19 +94,15 @@ class Form extends Component {
 
     return (
       <Date
-      type={type}
-      name={name}
-      label={label}
-      value={data[name]}
-      onChange={this.handleChange}
-      error={errors[name]}
-
+        type={type}
+        name={name}
+        label={label}
+        value={data[name]}
+        onChange={this.handleChange}
+        error={errors[name]}
       />
     );
   }
-
-
-
 
   renderParagraph(paragraphBody) {
     return <span>{paragraphBody}</span>;
