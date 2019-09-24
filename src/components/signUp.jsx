@@ -13,24 +13,25 @@ class Signup extends Form {
       email: "",
       contact: "",
       programmeApplied: "",
-      mobileNumber: "",
+      //mobileNumber: "",
       dob: "",
       lifeMembershipNumber: "",
+      landlineNumber: "",
       residentialAddress: "",
       residentialLandline: "",
-      married: "",
-      bloodGroup: "",
       companyName: "",
       product: "",
       comapanyWebsite: "",
-      landlineNumber: "",
       businessIncorporationDate: "",
       facebookLink: "",
       linkedinLink: "",
       instagramLink: "",
       twitterLink: ""
     },
-    area: [{ name: "Mumbai" }, { name: "Thane" }],
+    area: [{ name: "Andheri" }, { name: "Borivali" }, { name: "Ghatkopar" }, { name: "Goregaon" }, { name: "MadhyaMumbai" }, { name: "Malad" }, { name: "Mulund" }, { name: "SouthMumbai" }],
+    married: [{ name: "Yes"}, { name: "No"}],
+    bloodGroup:  [{ name: "B+" }, { name: "B-" }, { name: "AB+" }, { name: "AB-" }, { name: "O+" }, { name: "O-" }, { name: "A+" }, { name: "A-" }],
+    programmeApplied: [{name: "Startup" }, {name: "WomenEmpowerment" }, {name: "B2BConnect" } ],
     errors: {}
   };
 
@@ -46,16 +47,16 @@ class Signup extends Form {
       .label("Last name"),
     contact: Joi.string()
       .required()
-      .label("Contact numeb"),
+      .label("Contact number"),
     email: Joi.string()
       .required()
       .label("Email Id name"),
     programmeApplied: Joi.string()
       .required()
       .label("Program"),
-    mobileNumber: Joi.string()
-      .required()
-      .label("Contact name"),
+    //mobileNumber: Joi.string()
+      //.required()
+      //.label("Contact name"),
     dob: Joi.string()
       .required()
       .label("Date of birth"),
@@ -109,6 +110,7 @@ class Signup extends Form {
   doSubmit = () => {
     //Call server
     console.log("Submitted");
+    console.log(this.state.data)
   };
 
   render() {
@@ -123,8 +125,6 @@ class Signup extends Form {
             <br />
 
             <form onSubmit={this.handleSubmit}>
-              {this.renderSelect("area", "Area", this.state.area)}
-              <br />
               {this.renderInput("firstName", "First Name")}
               <br />
               {this.renderInput("middleName", "Middle Name")}
@@ -133,24 +133,24 @@ class Signup extends Form {
               <br />
               {this.renderInput("email", "Email", "email")}
               <br />
-              {this.renderParagraph("Programme Applied for (choose any one)")}
+              {this.renderSelection("programmeApplied", "Program Applied for", this.state.programmeApplied )}
               <br />
               {this.renderInput("contact", "Contact")}
               <br />
-              {this.renderInput("dob", "", "date")}
+              {this.renderDate("dob", "Date of Birth:", "date")}
               <br />
-              {this.renderParagraph("Life Membership Number (If any)")}
-              {this.renderInput("lifeMembershipNumber")}
+              {/*this.renderParagraph("Life Membership Number (If any)")*/}
+              {this.renderInput("lifeMembershipNumber", "Life Membership Number (If any)" )}
               <br />
               {this.renderInput("residentialAddress", "Residential Address")}
               <br />
               {this.renderInput("residentialLandline", "Residential Landline")}
               <br />
-              {this.renderInput("area", "Area", "Choose your area")}
+              {this.renderSelection("area", "Area", this.state.area)}
               <br />
-              {this.renderInput("married", "Married")}
+              {this.renderSelection("married", "Married", this.state.married)}
               <br />
-              {this.renderInput("bloodGroup", "Blood Group")}
+              {this.renderSelection("bloodGroup", "Blood Group", this.state.bloodGroup)}
               <br />
               {this.renderInput("companyName", "Company Name")}
               <br />
@@ -160,9 +160,9 @@ class Signup extends Form {
               <br />
               {this.renderInput("landlineNumber", "Landline Number")}
               <br />
-              {this.renderInput(
+              {this.renderDate(
                 "businessIncorporationDate",
-                "Business Incorporation Date",
+                "Business Incorporation Date:",
                 "date"
               )}
               <br />

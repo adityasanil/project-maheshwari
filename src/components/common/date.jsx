@@ -1,9 +1,10 @@
 import React from "react";
 import TextField from "@material-ui/core/TextField";
 
-const Input = ({ name, label, value, onChange, error, type }) => {
+const Date = ({ name, label, value, onChange, error, type }) => {
   return (
     <div className="">
+      <label htmlFor={name}>{label}</label>
       <TextField
         value={value}
         onChange={onChange}
@@ -13,7 +14,7 @@ const Input = ({ name, label, value, onChange, error, type }) => {
         fullWidth
         variant="standard"
         margin="dense"
-        label={label}
+        //label={label}
         
       />
       {error && <div>{error}</div>}
@@ -21,4 +22,4 @@ const Input = ({ name, label, value, onChange, error, type }) => {
   );
 };
 
-export default Input;
+export default Date;
