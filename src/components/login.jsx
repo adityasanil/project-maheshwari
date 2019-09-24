@@ -6,6 +6,8 @@ import Box from "@material-ui/core/Box";
 import Joi from "joi-browser";
 import brandLogo from "../assets/images/brandLogo.png";
 import Form from "./common/form";
+import http from "../services/httpService";
+import { apiEndPoint } from "../config.json";
 
 const styles = {
   image: {
@@ -48,9 +50,11 @@ class Login extends Form {
       .label("Password")
   };
 
-  doSubmit = () => {
+  doSubmit = async () => {
     //Call server
     console.log("Submitted");
+    const { data: sentData } = await http.post(apiEndPoint, this.state.data);
+    console.log(sentData);
   };
 
   render() {

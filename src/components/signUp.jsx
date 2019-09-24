@@ -5,6 +5,8 @@ import { Typography } from "@material-ui/core";
 import brandLogo from "../assets/images/brandLogo.png";
 import Form from "./common/form";
 import Joi from "joi-browser";
+import http from "../services/httpService";
+import { apiEndPoint } from "../config.json";
 
 const styles = {
   root: {
@@ -140,10 +142,11 @@ class Signup extends Form {
       .label("Twitter Link")
   };
 
-  doSubmit = () => {
-    //Call server
-    console.log(this.state.data);
+  doSubmit = async () => {
+    //Submit data to Server
     console.log("Submitted");
+    const { data: sentData } = await http.post(apiEndPoint, this.state.data);
+    console.log(sentData);
   };
 
   render() {
