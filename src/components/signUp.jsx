@@ -18,7 +18,6 @@ class Signup extends Form {
       lifeMembershipNumber: "",
       residentialAddress: "",
       residentialLandline: "",
-      area: "",
       married: "",
       bloodGroup: "",
       companyName: "",
@@ -31,6 +30,7 @@ class Signup extends Form {
       instagramLink: "",
       twitterLink: ""
     },
+    area: [{ name: "Mumbai" }, { name: "Thane" }],
     errors: {}
   };
 
@@ -123,6 +123,8 @@ class Signup extends Form {
             <br />
 
             <form onSubmit={this.handleSubmit}>
+              {this.renderSelect("area", "Area", this.state.area)}
+              <br />
               {this.renderInput("firstName", "First Name")}
               <br />
               {this.renderInput("middleName", "Middle Name")}

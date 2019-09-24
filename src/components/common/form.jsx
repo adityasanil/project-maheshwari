@@ -1,11 +1,13 @@
 import React, { Component } from "react";
 import Input from "./input";
+import Select from "./select";
 import Button from "@material-ui/core/Button";
 import Joi from "joi-browser";
 
 class Form extends Component {
   state = {
     data: {},
+    area: [],
     errors: {}
   };
 
@@ -36,15 +38,14 @@ class Form extends Component {
     return error ? error.details[0].message : null;
   };
 
-  // handleChange = ({ currentTarget: input }) => {
-  handleChange = e => {
-    const data = { ...this.state.data };
-    data[e.currentTarget.name] = e.currentTarget.value;
-
+  handleChange = ({ currentTarget: input }) => {
     const errors = { ...this.state.errors };
-    const errorMessage = this.validateIndividualField(e.currentTarget);
-    if (errorMessage) errors[e.currentTarget.name] = errorMessage;
-    else delete errors[e.currentTarget.name];
+    const errorMessage = this.validateIndividualField(input);
+    if (errorMessage) errors[input.name] = errorMessage;
+    else delete errors[input.name];
+
+    const data = { ...this.state.data };
+    data[input.name] = input.value;
 
     this.setState({ data, errors });
   };
@@ -69,6 +70,21 @@ class Form extends Component {
       <Button type="submit" color={color} variant={variant}>
         {label}
       </Button>
+    );
+  }
+
+  renderSelect(name, label, options) {
+    const { data, errors } = this.state;
+
+    return (
+      <Select
+        name={name}
+        value={data[name]}
+        label={label}
+        options={options}
+        onChange={this.handleChange}
+        error={errors[name]}
+      />
     );
   }
 
