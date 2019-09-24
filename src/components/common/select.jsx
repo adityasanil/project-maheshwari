@@ -1,6 +1,6 @@
 import React from "react";
 
-const Select = ({ name, label, options, error, ...rest }) => {
+const Selection = ({ name, label, options, error, ...rest }) => {
   return (
     <div>
       <label htmlFor={name}>{label}</label>
@@ -15,4 +15,4 @@ const Select = ({ name, label, options, error, ...rest }) => {
   );
 };
 
-export default Select;
+export default Selection;

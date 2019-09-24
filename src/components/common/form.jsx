@@ -1,8 +1,9 @@
 import React, { Component } from "react";
 import Input from "./input";
-import Select from "./select";
+import Selection from "./select";
 import Button from "@material-ui/core/Button";
 import Joi from "joi-browser";
+import Date from './date'
 
 class Form extends Component {
   state = {
@@ -73,11 +74,11 @@ class Form extends Component {
     );
   }
 
-  renderSelect(name, label, options) {
+  renderSelection(name, label, options) {
     const { data, errors } = this.state;
 
     return (
-      <Select
+      <Selection
         name={name}
         value={data[name]}
         label={label}
@@ -87,6 +88,25 @@ class Form extends Component {
       />
     );
   }
+
+  renderDate(name, label, type) {
+    const { data, errors } = this.state;
+
+    return (
+      <Date
+      type={type}
+      name={name}
+      label={label}
+      value={data[name]}
+      onChange={this.handleChange}
+      error={errors[name]}
+
+      />
+    );
+  }
+
+
+
 
   renderParagraph(paragraphBody) {
     return <span>{paragraphBody}</span>;
