@@ -5,8 +5,7 @@ import { Typography } from "@material-ui/core";
 import brandLogo from "../assets/images/brandLogo.png";
 import Form from "./common/form";
 import Joi from "joi-browser";
-import http from "../services/httpService";
-import { apiEndPoint } from "../config.json";
+import { register } from "../services/registerService";
 
 const styles = {
   root: {
@@ -29,7 +28,6 @@ class Signup extends Form {
       lastName: "",
       email: "",
       contact: "",
-      programmeApplied: "",
       dob: "",
       lifeMembershipNumber: "",
       landlineNumber: "",
@@ -67,8 +65,8 @@ class Signup extends Form {
     ],
     programmeApplied: [
       { name: "Startup" },
-      { name: "WomenEmpowerment" },
-      { name: "B2BConnect" }
+      { name: "Women Empowerment" },
+      { name: "B2B Connect" }
     ],
     errors: {}
   };
@@ -144,9 +142,9 @@ class Signup extends Form {
 
   doSubmit = async () => {
     //Submit data to Server
-    console.log("Submitted");
-    const { data: sentData } = await http.post(apiEndPoint, this.state.data);
-    console.log(sentData);
+    const { data } = this.state;
+    const response = await register(data);
+    console.log(response);
   };
 
   render() {
