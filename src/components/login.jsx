@@ -6,7 +6,7 @@ import Box from "@material-ui/core/Box";
 import Joi from "joi-browser";
 import brandLogo from "../assets/images/brandLogo.png";
 import Form from "./common/form";
-import { login } from "../services/loginService";
+import auth from "../services/authService";
 
 const styles = {
   image: {
@@ -53,9 +53,8 @@ class Login extends Form {
     //Submit credentials to the server
     try {
       const { data } = this.state;
-      const { data: jwt } = await login(data.email, data.password);
-      localStorage.setItem("token", jwt);
-      this.props.history.push("/dashboard");
+      await auth.login(data.email, data.password);
+      window.location = "/dashboard";
     } catch (ex) {
       if (ex.response && ex.response.status === 400) {
         const errors = { ...this.state.errors };
