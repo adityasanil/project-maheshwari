@@ -15,6 +15,7 @@ import MailIcon from "@material-ui/icons/Mail";
 import Button from "@material-ui/core/Button";
 import { Link } from "react-router-dom";
 import brandLogo from "../assets/images/logo.png";
+import SearchUsers from "../components/search";
 
 const useStyles = makeStyles(theme => ({
   grow: {
@@ -54,41 +55,40 @@ const useStyles = makeStyles(theme => ({
     textDecoration: "none",
     color: "white"
   },
-  search: {
-    position: "relative",
-    borderRadius: theme.shape.borderRadius,
-    backgroundColor: fade(theme.palette.common.white, 0.15),
-    "&:hover": {
-      backgroundColor: fade(theme.palette.common.white, 0.25)
-    },
-    marginRight: theme.spacing(2),
-    marginLeft: 0,
-    width: "100%",
-    [theme.breakpoints.up("sm")]: {
-      marginLeft: theme.spacing(3),
-      width: "auto"
-    }
-  },
+  // search: {
+  //   position: "relative",
+  //   borderRadius: theme.shape.borderRadius,
+  //   backgroundColor: fade(theme.palette.common.white, 0.15),
+  //   "&:hover": {
+  //     backgroundColor: fade(theme.palette.common.white, 0.25)
+  //   },
+  //   marginRight: theme.spacing(2),
+  //   marginLeft: 0,
+  //   width: "100%",
+  //   [theme.breakpoints.up("sm")]: {
+  //     marginLeft: theme.spacing(3),
+  //     width: "auto"
+  //   }
+  // },
   searchIcon: {
-    width: theme.spacing(7),
-    height: "100%",
-    position: "absolute",
+    // height: "100%",
     pointerEvents: "none",
     display: "flex",
     alignItems: "center",
-    justifyContent: "center"
+    justifyContent: "center",
+    color: "white"
   },
-  inputRoot: {
-    color: "inherit"
-  },
-  inputInput: {
-    padding: theme.spacing(1, 1, 1, 7),
-    transition: theme.transitions.create("width"),
-    width: "100%",
-    [theme.breakpoints.up("md")]: {
-      width: 200
-    }
-  },
+  // inputRoot: {
+  //   color: "inherit"
+  // },
+  // inputInput: {
+  //   padding: theme.spacing(1, 1, 1, 7),
+  //   transition: theme.transitions.create("width"),
+  //   width: "100%",
+  //   [theme.breakpoints.up("md")]: {
+  //     width: 50
+  //   }
+  // },
   sectionDesktop: {
     display: "none",
     [theme.breakpoints.up("md")]: {
@@ -139,11 +139,13 @@ const PrimarySearchAppBar = ({ user }) => {
       open={isMenuOpen}
       onClose={handleMenuClose}
     >
-      <MenuItem onClick={handleMenuClose}>
-        <Link to="/userProfile" className={classes.profileTextDeco}>
-          Profile
-        </Link>
-      </MenuItem>
+      {user && (
+        <MenuItem onClick={handleMenuClose}>
+          <Link to="/userProfile" className={classes.profileTextDeco}>
+            Profile: {user.name}
+          </Link>
+        </MenuItem>
+      )}
       <MenuItem onClick={handleMenuClose}>
         <Link to="/myAccount" className={classes.profileTextDeco}>
           My Account
@@ -206,7 +208,7 @@ const PrimarySearchAppBar = ({ user }) => {
             >
               <AccountCircle />
             </IconButton>
-            <p>Profile</p>
+            <p>Settings</p>
           </MenuItem>
         </React.Fragment>
       )}
@@ -232,21 +234,6 @@ const PrimarySearchAppBar = ({ user }) => {
               Maheshwari Samaj
             </Link>
           </Typography>
-          {user && (
-            <div className={classes.search}>
-              <div className={classes.searchIcon}>
-                <SearchIcon />
-              </div>
-              <InputBase
-                placeholder="Search…"
-                classes={{
-                  root: classes.inputRoot,
-                  input: classes.inputInput
-                }}
-                inputProps={{ "aria-label": "search" }}
-              />
-            </div>
-          )}
           <div className={classes.grow} />
           {!user && (
             <div className={classes.sectionDesktop}>
@@ -264,6 +251,19 @@ const PrimarySearchAppBar = ({ user }) => {
           )}
           {user && (
             <div className={classes.sectionDesktop}>
+              <div>
+                <IconButton
+                  aria-label="search users"
+                  aria-controls={null}
+                  aria-haspopup="true"
+                  onClick={null}
+                  color="inherit"
+                >
+                  <Link to="/searchUsers">
+                    <SearchIcon className={classes.searchIcon} />
+                  </Link>
+                </IconButton>
+              </div>
               <IconButton aria-label="show 4 new mails" color="inherit">
                 <Badge badgeContent={4} color="secondary">
                   <MailIcon />
@@ -282,6 +282,19 @@ const PrimarySearchAppBar = ({ user }) => {
             </div>
           )}
           <div className={classes.sectionMobile}>
+            <div>
+              <IconButton
+                aria-label="search users"
+                aria-controls={null}
+                aria-haspopup="true"
+                onClick={null}
+                color="inherit"
+              >
+                <Link to="/searchUsers">
+                  <SearchIcon className={classes.searchIcon} />
+                </Link>
+              </IconButton>
+            </div>
             <IconButton
               aria-label="show more"
               aria-controls={mobileMenuId}

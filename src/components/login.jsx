@@ -1,4 +1,5 @@
 import React from "react";
+import { Redirect } from "react-router-dom";
 import { Grid } from "@material-ui/core";
 import { Link } from "react-router-dom";
 import { withStyles } from "@material-ui/core/styles";
@@ -51,6 +52,7 @@ class Login extends Form {
 
   doSubmit = async () => {
     //Submit credentials to the server
+
     try {
       const { data } = this.state;
       await auth.login(data.email, data.password);
@@ -65,6 +67,8 @@ class Login extends Form {
   };
 
   render() {
+    if (auth.getCurrentUser()) return <Redirect to="/" />;
+
     const { classes } = this.props;
     return (
       <Grid container direction="column" justify="center" alignItems="center">

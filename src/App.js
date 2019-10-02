@@ -1,16 +1,16 @@
 import React, { Component } from "react";
-import { Route, Switch } from "react-router-dom";
+import { Route, Switch, Redirect } from "react-router-dom";
 import Home from "./components/home";
 import Signup from "./components/signUp";
 import Navbar from "./components/navbar";
 import Login from "./components/login";
 import ForgotPassword from "./components/forgotPassword";
-import SimpleCard from "./components/dashboard";
+import Dashboard from "./components/dashboard";
 import UserProfile from "./components/userProfile";
 import Logout from "./components/logout";
 import auth from "./services/authService";
 import MyAccount from "./components/myAccount";
-
+import SearchUsers from "./components/search";
 class App extends Component {
   state = {};
 
@@ -20,17 +20,31 @@ class App extends Component {
   }
 
   render() {
+    const { user } = this.state;
     return (
       <React.Fragment>
-        <Navbar user={this.state.user} />
+        <Navbar user={user} />
         <div className="content">
           <Switch>
+            <Route
+              path="/searchUsers"
+              render={props => {
+                if (user === null) return <Redirect to="/login" />;
+                return <SearchUsers {...props} />;
+              }}
+            />
             <Route path="/myAccount" component={MyAccount} />
             <Route path="/userProfile" component={UserProfile} />
-            <Route path="/dashboard" component={SimpleCard} />
+            <Route path="/login" component={Login} />
+            <Route
+              path="/dashboard"
+              render={props => {
+                if (user === null) return <Redirect to="/login" />;
+                return <Dashboard {...props} />;
+              }}
+            />
             <Route path="/forgotPassword" component={ForgotPassword} />
             <Route path="/logout" component={Logout} />
-            <Route path="/login" component={Login} />
             <Route path="/signup" component={Signup} />
             <Route path="/" component={Home} />
           </Switch>
