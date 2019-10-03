@@ -10,7 +10,7 @@ import UserProfile from "./components/userProfile";
 import Logout from "./components/logout";
 import auth from "./services/authService";
 import MyAccount from "./components/myAccount";
-import SearchUsers from "./components/search";
+import SearchPage from "./components/searchPage";
 class App extends Component {
   state = {};
 
@@ -30,7 +30,7 @@ class App extends Component {
               path="/searchUsers"
               render={props => {
                 if (user === null) return <Redirect to="/login" />;
-                return <SearchUsers {...props} />;
+                return <SearchPage {...props} />;
               }}
             />
             <Route path="/myAccount" component={MyAccount} />

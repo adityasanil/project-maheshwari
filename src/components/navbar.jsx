@@ -15,7 +15,7 @@ import MailIcon from "@material-ui/icons/Mail";
 import Button from "@material-ui/core/Button";
 import { Link } from "react-router-dom";
 import brandLogo from "../assets/images/logo.png";
-import SearchUsers from "../components/search";
+import SearchUsers from "./searchBox";
 
 const useStyles = makeStyles(theme => ({
   grow: {
@@ -282,19 +282,21 @@ const PrimarySearchAppBar = ({ user }) => {
             </div>
           )}
           <div className={classes.sectionMobile}>
-            <div>
-              <IconButton
-                aria-label="search users"
-                aria-controls={null}
-                aria-haspopup="true"
-                onClick={null}
-                color="inherit"
-              >
-                <Link to="/searchUsers">
-                  <SearchIcon className={classes.searchIcon} />
-                </Link>
-              </IconButton>
-            </div>
+            {user && (
+              <div>
+                <IconButton
+                  aria-label="search users"
+                  aria-controls={null}
+                  aria-haspopup="true"
+                  onClick={null}
+                  color="inherit"
+                >
+                  <Link to="/searchUsers">
+                    <SearchIcon className={classes.searchIcon} />
+                  </Link>
+                </IconButton>
+              </div>
+            )}
             <IconButton
               aria-label="show more"
               aria-controls={mobileMenuId}
