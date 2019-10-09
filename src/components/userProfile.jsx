@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { makeStyles, withStyles } from "@material-ui/core/styles";
+import { withStyles } from "@material-ui/core/styles";
 import Card from "@material-ui/core/Card";
 import { CardContent, Grid, Container } from "@material-ui/core";
 import Typography from "@material-ui/core/Typography";
@@ -95,7 +95,6 @@ class UserProfile extends Component {
   async componentDidMount() {
     try {
       const { data: user } = await loggedInUser();
-      console.log(user);
       this.setState({ user });
     } catch (error) {}
   }

@@ -1,10 +1,9 @@
 import React from "react";
-import { fade, makeStyles } from "@material-ui/core/styles";
+import { makeStyles } from "@material-ui/core/styles";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 import IconButton from "@material-ui/core/IconButton";
 import Typography from "@material-ui/core/Typography";
-import InputBase from "@material-ui/core/InputBase";
 import Badge from "@material-ui/core/Badge";
 import MenuItem from "@material-ui/core/MenuItem";
 import Menu from "@material-ui/core/Menu";
@@ -15,7 +14,6 @@ import MailIcon from "@material-ui/icons/Mail";
 import Button from "@material-ui/core/Button";
 import { Link } from "react-router-dom";
 import brandLogo from "../assets/images/logo.png";
-import SearchUsers from "./searchBox";
 
 const useStyles = makeStyles(theme => ({
   grow: {
@@ -142,7 +140,7 @@ const PrimarySearchAppBar = ({ user }) => {
       {user && (
         <MenuItem onClick={handleMenuClose}>
           <Link to="/userProfile" className={classes.profileTextDeco}>
-            Profile: {user.name}
+            Profile: {user.username}
           </Link>
         </MenuItem>
       )}
