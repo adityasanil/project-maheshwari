@@ -11,6 +11,7 @@ import MenuIcon from "@material-ui/icons/Menu";
 import SearchIcon from "@material-ui/icons/Search";
 import AccountCircle from "@material-ui/icons/AccountCircle";
 import MailIcon from "@material-ui/icons/Mail";
+import SupervisorAccountIcon from "@material-ui/icons/SupervisorAccount";
 import Button from "@material-ui/core/Button";
 import { Link } from "react-router-dom";
 import brandLogo from "../assets/images/logo.png";
@@ -146,11 +147,15 @@ const PrimarySearchAppBar = ({ user }) => {
       )}
       <MenuItem onClick={handleMenuClose}>
         <Link to="/myAccount" className={classes.profileTextDeco}>
-          My Account
+          Details
         </Link>
       </MenuItem>
       <MenuItem onClick={handleMenuClose}>
-        <Link to="/logout" className={classes.profileTextDeco}>
+        <Link
+          to="/logout"
+          style={{ color: "red" }}
+          className={classes.profileTextDeco}
+        >
           Log out
         </Link>
       </MenuItem>
@@ -189,6 +194,20 @@ const PrimarySearchAppBar = ({ user }) => {
       )}
       {user && (
         <React.Fragment>
+          {user.isAdmin && (
+            <MenuItem>
+              <Link to="/adminPanel" className={classes.profileTextDeco}>
+                <IconButton aria-label="" color="inherit">
+                  <Badge color="secondary">
+                    <SupervisorAccountIcon
+                      className={classes.profileTextDeco}
+                    />
+                  </Badge>
+                </IconButton>
+                Admin
+              </Link>
+            </MenuItem>
+          )}
           <MenuItem>
             <IconButton aria-label="show 4 new mails" color="inherit">
               <Badge badgeContent={4} color="secondary">
@@ -206,7 +225,7 @@ const PrimarySearchAppBar = ({ user }) => {
             >
               <AccountCircle />
             </IconButton>
-            <p>Settings</p>
+            <p>Account</p>
           </MenuItem>
         </React.Fragment>
       )}
@@ -267,6 +286,16 @@ const PrimarySearchAppBar = ({ user }) => {
                   <MailIcon />
                 </Badge>
               </IconButton>
+
+              {user.isAdmin && (
+                <IconButton aria-label="" color="inherit">
+                  <Badge color="secondary">
+                    <Link to="/adminPanel">
+                      <SupervisorAccountIcon className={classes.searchIcon} />
+                    </Link>
+                  </Badge>
+                </IconButton>
+              )}
               <IconButton
                 edge="end"
                 aria-label="account of current user"

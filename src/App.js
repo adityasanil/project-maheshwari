@@ -10,6 +10,7 @@ import UserProfile from "./components/userProfile";
 import Logout from "./components/logout";
 import auth from "./services/authService";
 import MyAccount from "./components/myAccount";
+import Admin from "./components/adminPanel";
 import SearchPage from "./components/searchPage";
 class App extends Component {
   state = {};
@@ -26,6 +27,13 @@ class App extends Component {
         <Navbar user={user} />
         <div className="content">
           <Switch>
+            <Route
+              path="/adminPanel"
+              render={props => {
+                if (user === null) return <Redirect to="/login" />;
+                return <Admin {...props} />;
+              }}
+            />
             <Route
               path="/searchUsers"
               render={props => {

@@ -11,6 +11,7 @@ class SearchPage extends Component {
         <br />
         <SearchBox />
         <SearchCard />
+        <br />
       </React.Fragment>
     );
   }
