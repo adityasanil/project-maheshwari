@@ -5,15 +5,8 @@ const style = {
   inputStyle: {
     width: "100%",
     height: "35px",
-    padding: "2px",
-
-    "@media only screen and (max-width: 600px)": {
-      width: "100%",
-      height: "30px",
-      marginBottom: "30px"
-    },
-
-    fontSize: "20px"
+    padding: "15px 0px 20px 10px",
+    fontSize: "25px"
   }
 };
 

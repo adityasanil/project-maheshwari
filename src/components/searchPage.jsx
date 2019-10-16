@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import SearchBox from "./searchBox";
-import SearchCard from "./searchCard";
+import ProfileCard from "./searchCard";
 import http from "../services/httpService";
 import Paper from "@material-ui/core/Paper";
 import { withStyles } from "@material-ui/core/styles";
@@ -11,16 +11,15 @@ const style = {
     width: "95%",
     height: "30px",
     marginLeft: "25px",
-    marginBottom: "10px",
     marginTop: "20px",
 
     "@media only screen and (max-width: 600px)": {
-      width: "85%",
-      marginLeft: "20px",
-      height: "20px",
-      marginBottom: "33px",
-      marginTop: "6px"
+      width: "82%",
+      marginTop: "20px"
     }
+  },
+  textDecoration: {
+    textDecoration: "none"
   }
 };
 
@@ -47,7 +46,19 @@ class SearchPage extends Component {
     } catch (error) {}
   };
 
+  //Do not delete this commented function
+
+  // searchQuery = async query => {
+  //   try {
+  //     const { data } = await http.get("http://localhost:3001/search/" + query);
+  //     const user = data.hits.hits;
+  //     console.log(user);
+  //     this.setState({ user });
+  //   } catch (error) {}
+  // };
+
   get renderUsers() {
+    const { classes } = this.props;
     let message = (
       <p>Search users by their name, industry, company name etc.</p>
     );
@@ -57,10 +68,13 @@ class SearchPage extends Component {
           {this.state.user.map(function(item, i) {
             return (
               <React.Fragment>
-                <Link key={item._source._id}>
-                  <p>
-                    {item._source.firstName} {item._source.lastName}
-                  </p>
+                <Link key={item._source._id} className={classes.textDecoration}>
+                  <ProfileCard
+                    firstName={item._source.firstName}
+                    lastName={item._source.lastName}
+                    companyName={item._source.companyName}
+                    industry={item._source.industry}
+                  />
                 </Link>
               </React.Fragment>
             );
@@ -79,12 +93,10 @@ class SearchPage extends Component {
         <br />
         <br />
         <Paper className={classes.paperStyle}>
-          <SearchBox onChange={this.handleChange} value={this.state.query} />{" "}
-          <button>Search</button>
+          <SearchBox onChange={this.handleChange} value={this.state.query} />
           <br />
           {this.renderUsers}
         </Paper>
-        {/* <SearchCard /> */}
       </React.Fragment>
     );
   }
