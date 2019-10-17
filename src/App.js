@@ -12,6 +12,8 @@ import auth from "./services/authService";
 import MyAccount from "./components/myAccount";
 import Admin from "./components/adminPanel";
 import SearchPage from "./components/searchPage";
+import TestUser from "./components/testUser";
+
 class App extends Component {
   state = {};
 
@@ -41,6 +43,7 @@ class App extends Component {
                 return <SearchPage {...props} />;
               }}
             />
+            <Route path="/users/:_id" component={TestUser} />
             <Route path="/myAccount" component={MyAccount} />
             <Route path="/userProfile" component={UserProfile} />
             <Route path="/login" component={Login} />

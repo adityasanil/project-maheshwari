@@ -6,6 +6,7 @@ import brandLogo from "../assets/images/brandLogo.png";
 import Form from "./common/form";
 import Joi from "joi-browser";
 import { register } from "../services/registerService";
+import Footer from "./footer";
 
 const styles = {
   root: {
@@ -42,6 +43,7 @@ class Signup extends Form {
       instagramLink: "",
       twitterLink: ""
     },
+
     area: [
       { name: "Andheri" },
       { name: "Borivali" },
@@ -52,7 +54,9 @@ class Signup extends Form {
       { name: "Mulund" },
       { name: "SouthMumbai" }
     ],
+
     married: [{ name: "Yes" }, { name: "No" }],
+
     bloodGroup: [
       { name: "B+" },
       { name: "B-" },
@@ -63,11 +67,41 @@ class Signup extends Form {
       { name: "A+" },
       { name: "A-" }
     ],
+
+    industry: [
+      { name: "Accounting" },
+      { name: "Apparel & Fashion" },
+      { name: "Banking" },
+      { name: "Chemicals" },
+      { name: "Computer Hardware" },
+      { name: "Cosmetics" },
+      { name: "Engineering " },
+      { name: "Entertainment" },
+      { name: "Finance" },
+      { name: "Food & Beverages" },
+      { name: "Health Care" },
+      { name: "Human Resources" },
+      { name: "Import & Export" },
+      { name: "Investment Banking" },
+      { name: "Legal Services" },
+      { name: "Leisure, Travel & Tourism" },
+      { name: "Marketing & Advertising" },
+      { name: "Pharmaceuticals" },
+      { name: "Photography" },
+      { name: "Printing" },
+      { name: "Professional Training & Coaching" },
+      { name: "Real Estate" },
+      { name: "Textiles" },
+      { name: "Wholesale" },
+      { name: "Others" }
+    ],
+
     programmeApplied: [
       { name: "Startup" },
       { name: "Women Empowerment" },
       { name: "B2B Connect" }
     ],
+
     errors: {}
   };
 
@@ -111,6 +145,9 @@ class Signup extends Form {
     bloodGroup: Joi.string()
       .required()
       .label("Blood Group"),
+    industry: Joi.string()
+      .required()
+      .label("Industry you belong to"),
     companyName: Joi.string()
       .required()
       .label("Company name"),
@@ -140,11 +177,18 @@ class Signup extends Form {
       .label("Twitter Link")
   };
 
+  // doSubmit = () => {
+  //   //Call server
+  //   console.log("Submitted");
+  //   console.log(this.state);
+  // };
+
   doSubmit = async () => {
     //Submit data to Server
     const { data } = this.state;
     const response = await register(data);
     console.log(response);
+    console.log(this.state);
   };
 
   render() {
@@ -230,6 +274,12 @@ class Signup extends Form {
                     this.state.bloodGroup
                   )}
                   <br />
+                  {this.renderSelection(
+                    "industry",
+                    "Industry you belong to: ",
+                    this.state.industry
+                  )}
+                  <br />
                   {this.renderInput("companyName", "Company Name")}
                   <br />
                   {this.renderInput("product", "Product/Service Lines")}
@@ -259,6 +309,7 @@ class Signup extends Form {
             </Grid>
           </Box>
         </Grid>
+        <Footer />
       </Grid>
     );
   }

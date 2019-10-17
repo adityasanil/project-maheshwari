@@ -117,6 +117,8 @@ class Home extends Component {
         </Grid>
         <br />
         <br />
+        <br />
+        <br />
         <Grid container className={classes.paper}>
           <Paper className={classes.paperBackground} id="about">
             <Box textAlign="center">

@@ -2,9 +2,10 @@ import React, { Component } from "react";
 import SearchBox from "./searchBox";
 import ProfileCard from "./profileCard";
 import http from "../services/httpService";
-import Paper from "@material-ui/core/Paper";
+// import Paper from "@material-ui/core/Paper";
 import { withStyles } from "@material-ui/core/styles";
 import { Link } from "react-router-dom";
+import IndusrtyCard from "./searchPageIndustryCard";
 
 const style = {
   paperStyle: {
@@ -66,7 +67,11 @@ class SearchPage extends Component {
           {this.state.user.map(function(item, i) {
             return (
               <React.Fragment>
-                <Link key={item._source._id} className={classes.textDecoration}>
+                <Link
+                  key={item._source._id}
+                  className={classes.textDecoration}
+                  to={"/users/" + item._id}
+                >
                   <ProfileCard
                     className={classes.cardStyle}
                     firstName={item._source.firstName}
@@ -86,20 +91,26 @@ class SearchPage extends Component {
 
   render() {
     const { query: queryValue } = this.state;
+    const { classes } = this.props;
     return (
       <React.Fragment>
         <br />
         <br />
 
         {/* <Paper className={classes.paperStyle}> */}
-        <SearchBox onChange={this.handleChange} value={this.state.query} />
+        <SearchBox
+          onChange={this.handleChange}
+          value={this.state.query}
+          className={classes.paperStyle}
+        />
         <br />
         {this.renderUsers}
         {/* </Paper> */}
 
         {!queryValue && (
           <React.Fragment>
-            <h1>Cards go in here</h1>
+            <IndusrtyCard />
+            <br />
           </React.Fragment>
         )}
       </React.Fragment>
