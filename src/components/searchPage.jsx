@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import SearchBox from "./searchBox";
-import ProfileCard from "./searchCard";
+import ProfileCard from "./profileCard";
 import http from "../services/httpService";
 import Paper from "@material-ui/core/Paper";
 import { withStyles } from "@material-ui/core/styles";
@@ -10,9 +10,7 @@ const style = {
   paperStyle: {
     width: "95%",
     height: "30px",
-    marginLeft: "25px",
-    marginTop: "20px",
-
+    margin: "25px",
     "@media only screen and (max-width: 600px)": {
       width: "82%",
       marginTop: "20px"
@@ -70,6 +68,7 @@ class SearchPage extends Component {
               <React.Fragment>
                 <Link key={item._source._id} className={classes.textDecoration}>
                   <ProfileCard
+                    className={classes.cardStyle}
                     firstName={item._source.firstName}
                     lastName={item._source.lastName}
                     companyName={item._source.companyName}
@@ -82,21 +81,27 @@ class SearchPage extends Component {
         </React.Fragment>
       );
     }
-
     return message;
   }
 
   render() {
-    const { classes } = this.props;
+    const { query: queryValue } = this.state;
     return (
       <React.Fragment>
         <br />
         <br />
-        <Paper className={classes.paperStyle}>
-          <SearchBox onChange={this.handleChange} value={this.state.query} />
-          <br />
-          {this.renderUsers}
-        </Paper>
+
+        {/* <Paper className={classes.paperStyle}> */}
+        <SearchBox onChange={this.handleChange} value={this.state.query} />
+        <br />
+        {this.renderUsers}
+        {/* </Paper> */}
+
+        {!queryValue && (
+          <React.Fragment>
+            <h1>Cards go in here</h1>
+          </React.Fragment>
+        )}
       </React.Fragment>
     );
   }

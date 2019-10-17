@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Grid } from "@material-ui/core";
-import CardComponent from "./common/card";
+import CardComponent from "./common/profileCard";
 
 class ProfileCard extends Component {
   render() {

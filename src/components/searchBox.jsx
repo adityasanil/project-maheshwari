@@ -6,7 +6,9 @@ const style = {
     width: "100%",
     height: "35px",
     padding: "15px 0px 20px 10px",
-    fontSize: "25px"
+    fontSize: "25px",
+    border: "solid #ffccbc",
+    borderRadius: "6px"
   }
 };
 
