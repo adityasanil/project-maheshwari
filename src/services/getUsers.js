@@ -15,7 +15,7 @@ export async function loggedInUser() {
   return user;
 }
 
-export async function getSearchedUser() {
-  const user = await http.get("http://localhost:3001/users/:_id");
-  return user;
+export async function getSearchedUser(email) {
+  const searchedUser = await http.get("http://localhost:3001/users/" + email);
+  return searchedUser;
 }

@@ -2,21 +2,11 @@ import React, { Component } from "react";
 import SearchBox from "./searchBox";
 import ProfileCard from "./profileCard";
 import http from "../services/httpService";
-// import Paper from "@material-ui/core/Paper";
 import { withStyles } from "@material-ui/core/styles";
 import { Link } from "react-router-dom";
 import IndusrtyCard from "./searchPageIndustryCard";
 
 const style = {
-  paperStyle: {
-    width: "95%",
-    height: "30px",
-    margin: "25px",
-    "@media only screen and (max-width: 600px)": {
-      width: "82%",
-      marginTop: "20px"
-    }
-  },
   textDecoration: {
     textDecoration: "none"
   }
@@ -58,9 +48,6 @@ class SearchPage extends Component {
 
   get renderUsers() {
     const { classes } = this.props;
-    let message = (
-      <p>Search users by their name, industry, company name etc.</p>
-    );
     if (this.state.user.length !== 0) {
       return (
         <React.Fragment>
@@ -70,7 +57,7 @@ class SearchPage extends Component {
                 <Link
                   key={item._source._id}
                   className={classes.textDecoration}
-                  to={"/users/" + item._id}
+                  to={`/users/${item._source.email}`}
                 >
                   <ProfileCard
                     className={classes.cardStyle}
@@ -86,26 +73,19 @@ class SearchPage extends Component {
         </React.Fragment>
       );
     }
-    return message;
+    return null;
   }
 
   render() {
     const { query: queryValue } = this.state;
-    const { classes } = this.props;
     return (
       <React.Fragment>
         <br />
         <br />
-
-        {/* <Paper className={classes.paperStyle}> */}
-        <SearchBox
-          onChange={this.handleChange}
-          value={this.state.query}
-          className={classes.paperStyle}
-        />
+        <SearchBox onChange={this.handleChange} value={this.state.query} />
         <br />
+
         {this.renderUsers}
-        {/* </Paper> */}
 
         {!queryValue && (
           <React.Fragment>

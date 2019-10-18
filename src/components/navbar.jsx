@@ -54,40 +54,13 @@ const useStyles = makeStyles(theme => ({
     textDecoration: "none",
     color: "white"
   },
-  // search: {
-  //   position: "relative",
-  //   borderRadius: theme.shape.borderRadius,
-  //   backgroundColor: fade(theme.palette.common.white, 0.15),
-  //   "&:hover": {
-  //     backgroundColor: fade(theme.palette.common.white, 0.25)
-  //   },
-  //   marginRight: theme.spacing(2),
-  //   marginLeft: 0,
-  //   width: "100%",
-  //   [theme.breakpoints.up("sm")]: {
-  //     marginLeft: theme.spacing(3),
-  //     width: "auto"
-  //   }
-  // },
   searchIcon: {
-    // height: "100%",
     pointerEvents: "none",
     display: "flex",
     alignItems: "center",
     justifyContent: "center",
     color: "white"
   },
-  // inputRoot: {
-  //   color: "inherit"
-  // },
-  // inputInput: {
-  //   padding: theme.spacing(1, 1, 1, 7),
-  //   transition: theme.transitions.create("width"),
-  //   width: "100%",
-  //   [theme.breakpoints.up("md")]: {
-  //     width: 50
-  //   }
-  // },
   sectionDesktop: {
     display: "none",
     [theme.breakpoints.up("md")]: {
@@ -276,7 +249,7 @@ const PrimarySearchAppBar = ({ user }) => {
                   onClick={null}
                   color="inherit"
                 >
-                  <Link to="/searchUsers">
+                  <Link to="/search">
                     <SearchIcon className={classes.searchIcon} />
                   </Link>
                 </IconButton>
@@ -318,7 +291,7 @@ const PrimarySearchAppBar = ({ user }) => {
                   onClick={null}
                   color="inherit"
                 >
-                  <Link to="/searchUsers">
+                  <Link to="/search">
                     <SearchIcon className={classes.searchIcon} />
                   </Link>
                 </IconButton>

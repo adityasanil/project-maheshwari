@@ -12,7 +12,7 @@ import auth from "./services/authService";
 import MyAccount from "./components/myAccount";
 import Admin from "./components/adminPanel";
 import SearchPage from "./components/searchPage";
-import TestUser from "./components/testUser";
+import SearchedUserProfile from "./components/searchedUserProfile";
 
 class App extends Component {
   state = {};
@@ -37,13 +37,13 @@ class App extends Component {
               }}
             />
             <Route
-              path="/searchUsers"
+              path="/search"
               render={props => {
                 if (user === null) return <Redirect to="/login" />;
                 return <SearchPage {...props} />;
               }}
             />
-            <Route path="/users/:_id" component={TestUser} />
+            <Route path="/users/:email" component={SearchedUserProfile} />
             <Route path="/myAccount" component={MyAccount} />
             <Route path="/userProfile" component={UserProfile} />
             <Route path="/login" component={Login} />

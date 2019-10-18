@@ -8,51 +8,36 @@ const styles = {
   card: {
     minWidth: 220,
     marginLeft: "24px",
-    width: "83%",
-    height: "210px",
-    marginTop: "40px",
+    width: "85%",
+    height: "135px",
+    marginTop: "22px",
 
     "@media only screen and (max-width: 600px)": {
       width: "85%",
-      //margin: "5px",
-      marginTop: "5px",
+      marginTop: "15px",
       marginLeft: "25px",
       height: "auto",
       marginBottom: "10px"
     }
   },
-  bullet: {
-    display: "inline-block",
-    margin: "0 2px",
-    transform: "scale(1.0)"
-  },
   title: {
     fontSize: 26,
     fontFamily: "Oleo Script",
-    //fontWeight: '700',
     color: "rgb(255, 81, 0)",
     textAlign: "center",
-    marginTop: "50px"
-  },
-
-  subtitle: {
-    fontFamily: "Jura",
-    fontSize: 16,
-    fontWeight: "500",
-    color: "black",
-    textAlign: "center",
-    marginTop: "20px",
-    marginBottom: "50px"
-  },
-
-  pos: {
-    marginBottom: 12
-  },
-
-  media: {
-    height: 220,
-    paddingTop: "5px"
+    marginTop: "30px",
+    marginBottom: "40px"
   }
+
+  // subtitle: {
+  //   fontFamily: "Jura",
+  //   fontSize: 16,
+  //   fontWeight: "500",
+  //   color: "black",
+  //   textAlign: "center",
+  //   marginTop: "20px",
+  //   marginBottom: "50px"
+  // },
 };
 
 class CardComponent extends Component {
@@ -63,26 +48,25 @@ class CardComponent extends Component {
 
     return (
       <Grid item lg={3} sm={6} md={4} xs={12}>
-        <Card className={classes.card} elevation={4}>
+        <Card className={classes.card} elevation={5}>
           <CardActionArea>
             <CardContent>
               <Typography
                 className={classes.title}
                 variant="h5"
                 component="h2"
-                style={{ textAlign: "center", marginTop: "50px" }}
                 gutterBottom
               >
                 {this.props.industry}
               </Typography>
-              <Typography
+              {/* <Typography
                 className={classes.subtitle}
                 style={{ textAlign: "center", marginTop: "20px" }}
                 color="textSecondary"
                 gutterBottom
               >
                 {bull}User Count: {this.props.userCount}
-              </Typography>
+              </Typography> */}
             </CardContent>
           </CardActionArea>
         </Card>
