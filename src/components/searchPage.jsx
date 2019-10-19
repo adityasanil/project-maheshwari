@@ -57,7 +57,7 @@ class SearchPage extends Component {
                 <Link
                   key={item._source._id}
                   className={classes.textDecoration}
-                  to={`/users/${item._source.email}`}
+                  to={`/users/profile/${item._id}`}
                 >
                   <ProfileCard
                     className={classes.cardStyle}

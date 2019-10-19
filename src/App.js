@@ -48,7 +48,8 @@ class App extends Component {
               path="/users/industry/:industryName"
               component={IndustryUserList}
             />
-            <Route path="/users/:email" component={SearchedUserProfile} />
+            <Route path="/users/profile/:id" component={SearchedUserProfile} />
+            {/* <Route path="/users/:email" component={SearchedUserProfile} /> */}
             <Route path="/myAccount" component={MyAccount} />
             <Route path="/userProfile" component={UserProfile} />
             <Route path="/login" component={Login} />

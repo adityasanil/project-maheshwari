@@ -95,8 +95,8 @@ class TestProfile extends Component {
 
   async componentDidMount() {
     try {
-      const email = this.props.match.params.email;
-      const { data: user } = await getSearchedUser(email);
+      const id = this.props.match.params.id;
+      const { data: user } = await getSearchedUser(id);
       this.setState({ user });
     } catch (error) {}
   }

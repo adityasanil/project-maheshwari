@@ -22,7 +22,9 @@ export async function loggedInUser() {
   return user;
 }
 
-export async function getSearchedUser(email) {
-  const searchedUser = await http.get("http://localhost:3001/users/" + email);
+export async function getSearchedUser(id) {
+  const searchedUser = await http.get(
+    "http://localhost:3001/users/profile/" + id
+  );
   return searchedUser;
 }
