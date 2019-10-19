@@ -18,7 +18,7 @@ import EmailIcon from "@material-ui/icons/AlternateEmail";
 import { getSearchedUser } from "../services/getUsers";
 import Button from "@material-ui/core/Button";
 import Icon from "@material-ui/core/Icon";
-import SendRoundedIcon from "@material-ui/icons/SendRounded";
+// import SendRoundedIcon from "@material-ui/icons/SendRounded";
 
 const useStyles = {
   card: {

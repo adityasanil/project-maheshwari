@@ -13,6 +13,7 @@ import MyAccount from "./components/myAccount";
 import Admin from "./components/adminPanel";
 import SearchPage from "./components/searchPage";
 import SearchedUserProfile from "./components/searchedUserProfile";
+import IndustryUserList from "./components/industryUserList";
 
 class App extends Component {
   state = {};
@@ -42,6 +43,10 @@ class App extends Component {
                 if (user === null) return <Redirect to="/login" />;
                 return <SearchPage {...props} />;
               }}
+            />
+            <Route
+              path="/users/industry/:industryName"
+              component={IndustryUserList}
             />
             <Route path="/users/:email" component={SearchedUserProfile} />
             <Route path="/myAccount" component={MyAccount} />

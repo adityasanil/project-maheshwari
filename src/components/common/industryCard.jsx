@@ -3,6 +3,7 @@ import { withStyles } from "@material-ui/core/styles";
 import { Card, Grid, CardActionArea } from "@material-ui/core";
 import CardContent from "@material-ui/core/CardContent";
 import Typography from "@material-ui/core/Typography";
+import { Link } from "react-router-dom";
 
 const styles = {
   card: {
@@ -27,6 +28,9 @@ const styles = {
     textAlign: "center",
     marginTop: "30px",
     marginBottom: "40px"
+  },
+  textDeco: {
+    textDecoration: "none"
   }
 
   // subtitle: {
@@ -44,22 +48,26 @@ class CardComponent extends Component {
   state = {};
   render() {
     const { classes } = this.props;
-    const bull = <span className={classes.bullet}>•</span>;
+    // const bull = <span className={classes.bullet}>•</span>;
 
     return (
       <Grid item lg={3} sm={6} md={4} xs={12}>
         <Card className={classes.card} elevation={5}>
-          <CardActionArea>
-            <CardContent>
-              <Typography
-                className={classes.title}
-                variant="h5"
-                component="h2"
-                gutterBottom
-              >
-                {this.props.industry}
-              </Typography>
-              {/* <Typography
+          <Link
+            to={`/users/industry/${this.props.industry}`}
+            className={classes.textDeco}
+          >
+            <CardActionArea>
+              <CardContent>
+                <Typography
+                  className={classes.title}
+                  variant="h5"
+                  component="h2"
+                  gutterBottom
+                >
+                  {this.props.industry}
+                </Typography>
+                {/* <Typography
                 className={classes.subtitle}
                 style={{ textAlign: "center", marginTop: "20px" }}
                 color="textSecondary"
@@ -67,8 +75,9 @@ class CardComponent extends Component {
               >
                 {bull}User Count: {this.props.userCount}
               </Typography> */}
-            </CardContent>
-          </CardActionArea>
+              </CardContent>
+            </CardActionArea>
+          </Link>
         </Card>
       </Grid>
     );

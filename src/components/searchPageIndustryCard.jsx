@@ -10,7 +10,7 @@ class SearchCard extends Component {
         <CardComponent industry="Apparel & Fashion" userCount="1" />
         <CardComponent industry="Banking" userCount="5" />
         <CardComponent industry="Chemicals" userCount="2" />
-        <CardComponent industry="Computer Hardware" userCount="8" />
+        <CardComponent industry="IT" userCount="8" />
         <CardComponent industry="Cosmetics" userCount="3" />
         <CardComponent industry="Engineering" userCount="11" />
         <CardComponent industry="Entertainment" userCount="2" />

@@ -2,12 +2,12 @@ import React, { Component } from "react";
 import { AppBar, Grid } from "@material-ui/core/";
 import Typography from "@material-ui/core/Typography";
 import CodeIcon from "@material-ui/icons/Code";
-import ListItem from "@material-ui/core/ListItem";
-import ListItemText from "@material-ui/core/ListItemText";
-import ListItemAvatar from "@material-ui/core/ListItemAvatar";
-import Avatar from "@material-ui/core/Avatar";
-import EmailIcon from "@material-ui/icons/Email";
-import PhoneIphoneIcon from "@material-ui/icons/PhoneIphone";
+// import ListItem from "@material-ui/core/ListItem";
+// import ListItemText from "@material-ui/core/ListItemText";
+// import ListItemAvatar from "@material-ui/core/ListItemAvatar";
+// import Avatar from "@material-ui/core/Avatar";
+// import EmailIcon from "@material-ui/icons/Email";
+// import PhoneIphoneIcon from "@material-ui/icons/PhoneIphone";
 import { withStyles } from "@material-ui/core/styles";
 
 const styles = {

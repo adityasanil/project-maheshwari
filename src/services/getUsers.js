@@ -7,6 +7,13 @@ export async function getUsers() {
   return users;
 }
 
+export async function getIndustryUsersList(industryName) {
+  const industryUserList = await http.get(
+    "http://localhost:3001/users/industry/" + industryName
+  );
+  return industryUserList;
+}
+
 export async function loggedInUser() {
   const jwtKey = getJwtKey();
   const { email } = jwt_decode(jwtKey);

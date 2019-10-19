@@ -26,10 +26,10 @@ class SearchPage extends Component {
 
   searchQuery = async query => {
     try {
-      console.log(query);
       const { data } = await http.get(
         "http://localhost:9200/personaldetailss/_search?q=" + query + "&pretty"
       );
+
       const user = data.hits.hits;
       this.setState({ user });
     } catch (error) {}
