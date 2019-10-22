@@ -1,7 +1,7 @@
 import React, { Component } from "react";
+import { CardContent, Grid, Container } from "@material-ui/core";
 import { withStyles } from "@material-ui/core/styles";
 import Card from "@material-ui/core/Card";
-import { CardContent, Grid, Container } from "@material-ui/core";
 import Typography from "@material-ui/core/Typography";
 import ListItem from "@material-ui/core/ListItem";
 import ListItemText from "@material-ui/core/ListItemText";
@@ -74,11 +74,9 @@ const useStyles = {
     marginTop: 30,
     fontFamily: "Balthazar",
     fontSize: "30px"
-    // margin: 50
   },
 
   business: {
-    // paddingLeft: 35,
     fontFamily: "Balthazar",
     marginTop: 30,
     marginBottom: 0,

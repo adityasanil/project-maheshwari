@@ -60,6 +60,7 @@ class SearchPage extends Component {
                   to={`/users/profile/${item._id}`}
                 >
                   <ProfileCard
+                    key={item._source._id}
                     className={classes.cardStyle}
                     firstName={item._source.firstName}
                     lastName={item._source.lastName}

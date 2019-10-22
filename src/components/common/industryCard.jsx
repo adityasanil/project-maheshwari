@@ -12,7 +12,6 @@ const styles = {
     width: "85%",
     height: "135px",
     marginTop: "22px",
-
     "@media only screen and (max-width: 600px)": {
       width: "85%",
       marginTop: "15px",
@@ -32,23 +31,11 @@ const styles = {
   textDeco: {
     textDecoration: "none"
   }
-
-  // subtitle: {
-  //   fontFamily: "Jura",
-  //   fontSize: 16,
-  //   fontWeight: "500",
-  //   color: "black",
-  //   textAlign: "center",
-  //   marginTop: "20px",
-  //   marginBottom: "50px"
-  // },
 };
 
 class CardComponent extends Component {
-  state = {};
   render() {
     const { classes } = this.props;
-    // const bull = <span className={classes.bullet}>•</span>;
 
     return (
       <Grid item lg={3} sm={6} md={4} xs={12}>
@@ -67,14 +54,6 @@ class CardComponent extends Component {
                 >
                   {this.props.industry}
                 </Typography>
-                {/* <Typography
-                className={classes.subtitle}
-                style={{ textAlign: "center", marginTop: "20px" }}
-                color="textSecondary"
-                gutterBottom
-              >
-                {bull}User Count: {this.props.userCount}
-              </Typography> */}
               </CardContent>
             </CardActionArea>
           </Link>
