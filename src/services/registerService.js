@@ -8,6 +8,7 @@ export function register(data) {
     firstName: data.firstName,
     middleName: data.middleName,
     lastName: data.lastName,
+    username: data.username,
     email: data.email,
     contact: data.contact,
     programmeApplied: data.programmeApplied,
@@ -18,6 +19,7 @@ export function register(data) {
     residentialLandline: data.residentialLandline,
     companyName: data.companyName,
     product: data.product,
+    industry: data.industry,
     comapanyWebsite: data.comapanyWebsite,
     businessIncorporationDate: data.businessIncorporationDate,
     facebookLink: data.facebookLink,
@@ -26,6 +28,6 @@ export function register(data) {
     twitterLink: data.twitterLink,
     area: data.area,
     married: data.married,
-    bloodgroup: data.bloodgroup
+    bloodGroup: data.bloodGroup
   });
 }

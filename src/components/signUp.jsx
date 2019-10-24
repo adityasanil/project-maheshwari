@@ -26,6 +26,7 @@ class Signup extends Form {
       firstName: "",
       middleName: "",
       lastName: "",
+      username: "",
       email: "",
       contact: "",
       dob: "",
@@ -118,6 +119,9 @@ class Signup extends Form {
     lastName: Joi.string()
       .required()
       .label("Last name"),
+    username: Joi.string()
+      .required()
+      .label("Username"),
     contact: Joi.string()
       .required()
       .label("Contact number"),
@@ -150,7 +154,7 @@ class Signup extends Form {
       .label("Blood Group"),
     industry: Joi.string()
       .required()
-      .label("Industry you belong to"),
+      .label("Industry"),
     companyName: Joi.string()
       .required()
       .label("Company name"),
@@ -180,18 +184,12 @@ class Signup extends Form {
       .label("Twitter Link")
   };
 
-  // doSubmit = () => {
-  //   //Call server
-  //   console.log("Submitted");
-  //   console.log(this.state);
-  // };
-
   doSubmit = async () => {
     //Submit data to Server
     const { data } = this.state;
+    // console.log(data);
     const response = await register(data);
     console.log(response);
-    console.log(this.state);
   };
 
   render() {
@@ -235,6 +233,8 @@ class Signup extends Form {
                   {this.renderInput("middleName", "Middle Name")}
                   <br />
                   {this.renderInput("lastName", "Last Name")}
+                  <br />
+                  {this.renderInput("username", "Username")}
                   <br />
                   {this.renderInput("email", "Email", "email")}
                   <br />
