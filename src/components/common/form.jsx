@@ -20,12 +20,15 @@ class Form extends Component {
     this.setState({ errors: errors || {} });
     if (errors) return;
     this.doSubmit();
+    // if(!errors) return;
+    // window.alert("Signup Successful");
   };
 
   validateForm = () => {
     const options = { abortEarly: false };
     const { error } = Joi.validate(this.state.data, this.schema, options);
     if (!error) return null;
+
     const errors = {};
     // eslint-disable-next-line no-unused-vars
     for (let item of error.details) errors[item.path[0]] = item.message;
@@ -66,9 +69,9 @@ class Form extends Component {
     );
   }
 
-  renderButton(label, color, variant) {
+  renderButton(label, color, variant, onClick) {
     return (
-      <Button type="submit" color={color} variant={variant}>
+      <Button type="submit" color={color} variant={variant} onClick={onClick}>
         {label}
       </Button>
     );

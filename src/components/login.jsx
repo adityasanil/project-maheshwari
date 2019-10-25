@@ -1,6 +1,6 @@
 import React from "react";
 import { Redirect } from "react-router-dom";
-import { Grid } from "@material-ui/core";
+import { Grid, Typography } from "@material-ui/core";
 import { Link } from "react-router-dom";
 import { withStyles } from "@material-ui/core/styles";
 import Box from "@material-ui/core/Box";
@@ -29,6 +29,12 @@ const styles = {
   buttonSize: {
     width: "100%",
     maxWidth: "400px"
+  },
+  message: {
+    color: "rgb(255, 81, 0)",
+    "@media only screen and (max-width: 600px)": {
+      fontSize: "15px"
+    }
   }
 };
 
@@ -78,7 +84,23 @@ class Login extends Form {
             <img src={brandLogo} alt="logo" className={classes.image} />
           </div>
           <div className={classes.heading}>
-            {this.renderParagraph("Welcome to our platform")}
+            {/* {this.renderParagraph("Welcome to our platform")} */}
+            <center>
+              <Typography
+                style={{ padding: "5px", fontFamily: "Jura" }}
+                variant="h4"
+                color="textPrimary"
+              >
+                Login
+              </Typography>
+              {/* <Typography
+                component="div"
+                className={classes.message}
+                variant="body1"
+              >
+                You can login only after approval is sent on your email
+              </Typography> */}
+            </center>
           </div>
           <Box mb={1}>
             <div>
@@ -98,6 +120,15 @@ class Login extends Form {
                         {this.renderInput("password", "Password", "password")}
                       </div>
                     </Grid>
+                    <br />
+                    <Grid
+                      container
+                      direction="row"
+                      justify="center"
+                      alignItems="center"
+                    >
+                      {this.renderButton("Log in", "secondary", "contained")}
+                    </Grid>
                   </Box>
                   <Box mb={2}>
                     <Grid
@@ -115,18 +146,6 @@ class Login extends Form {
                         </Link>
                       </div>
                     </Grid>
-                  </Box>
-                  <Box>
-                    <div className={classes.buttonSize}>
-                      <Grid
-                        container
-                        direction="row"
-                        justify="center"
-                        alignItems="center"
-                      >
-                        {this.renderButton("Log in", "secondary", "contained")}
-                      </Grid>
-                    </div>
                   </Box>
                 </div>
               </form>

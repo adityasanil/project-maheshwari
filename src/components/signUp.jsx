@@ -1,5 +1,5 @@
 import React from "react";
-import { Grid, Box } from "@material-ui/core";
+import { Grid, Box, List } from "@material-ui/core";
 import { withStyles } from "@material-ui/core/styles";
 import { Typography } from "@material-ui/core";
 import brandLogo from "../assets/images/brandLogo.png";
@@ -14,9 +14,27 @@ const styles = {
     height: "auto"
   },
   image: {
+    marginTop: "25px",
     width: "100%",
     maxWidth: "350px",
-    height: "auto"
+    height: "auto",
+    "@media only screen and (max-width: 600px)": {
+      marginTop: "0px"
+    }
+  },
+  welcome: {
+    padding: "8px",
+    fontFamily: "Jura",
+    fontSize: "26px",
+    fontWeight: "600"
+  },
+
+  list: {
+    maxHeight: 457,
+    overflow: "auto",
+    "@media only screen and (max-width: 600px)": {
+      maxHeight: "100%"
+    }
   }
 };
 
@@ -195,125 +213,138 @@ class Signup extends Form {
   render() {
     const { classes } = this.props;
     return (
-      <Grid container>
-        <Grid item xs={12} lg={6} sm={12}>
-          <Box>
-            <Grid
-              container
-              justify="center"
-              alignItems="center"
-              direction="column"
-            >
-              <br />
-              <div>
-                <Typography>Welcome to our platform</Typography>
-              </div>
-              <div>
-                <img src={brandLogo} alt="logo" className={classes.image} />
-              </div>
-            </Grid>
-          </Box>
-        </Grid>
-        <Grid item xs={12} lg={6} sm={12}>
-          <Box>
-            <Grid
-              container
-              justify="center"
-              alignItems="center"
-              direction="column"
-            >
-              <div className={classes.root}>
+      <div>
+        <center>
+          <Typography variant="h5" className={classes.welcome}>
+            Welcome to our B2B Connect Platform
+          </Typography>
+        </center>
+        <Grid container>
+          <Grid item xs={12} lg={6} sm={12}>
+            <Box>
+              <Grid
+                container
+                justify="center"
+                alignItems="center"
+                direction="column"
+              >
                 <br />
-                <Box textAlign="center">
-                  {this.renderParagraph("Welcome to our Signup page")}
-                </Box>
-                <form onSubmit={this.handleSubmit}>
-                  {this.renderInput("firstName", "First Name")}
-                  <br />
-                  {this.renderInput("middleName", "Middle Name")}
-                  <br />
-                  {this.renderInput("lastName", "Last Name")}
-                  <br />
-                  {this.renderInput("username", "Username")}
-                  <br />
-                  {this.renderInput("email", "Email", "email")}
-                  <br />
-                  {this.renderSelection(
-                    "programmeApplied",
-                    "Program Applied for:  ",
-                    this.state.programmeApplied
-                  )}
-                  <br />
-                  {this.renderInput("contact", "Contact")}
-                  <br />
-                  {this.renderDate("dob", "Date of Birth:", "date")}
-                  <br />
-                  {this.renderInput(
-                    "lifeMembershipNumber",
-                    "Life Membership Number (If any)"
-                  )}
-                  <br />
-                  {this.renderInput(
-                    "residentialAddress",
-                    "Residential Address"
-                  )}
-                  <br />
-                  {this.renderInput(
-                    "residentialLandline",
-                    "Residential Landline"
-                  )}
-                  <br />
-                  {this.renderSelection("area", "Area: ", this.state.area)}
-                  <br />
-                  {this.renderSelection(
-                    "married",
-                    "Married: ",
-                    this.state.married
-                  )}
-                  <br />
-                  {this.renderSelection(
-                    "bloodGroup",
-                    "Blood Group: ",
-                    this.state.bloodGroup
-                  )}
-                  <br />
-                  {this.renderSelection(
-                    "industry",
-                    "Industry you belong to: ",
-                    this.state.industry
-                  )}
-                  <br />
-                  {this.renderInput("companyName", "Company Name")}
-                  <br />
-                  {this.renderInput("product", "Product/Service Lines")}
-                  <br />
-                  {this.renderInput("comapanyWebsite", "Comapany Website")}
-                  <br />
-                  {this.renderInput("landlineNumber", "Landline Number")}
-                  <br />
-                  {this.renderDate(
-                    "businessIncorporationDate",
-                    "Business Incorporation Date:",
-                    "date"
-                  )}
-                  <br />
-                  {this.renderInput("facebookLink", "Facebook Link")}
-                  <br />
-                  {this.renderInput("linkedinLink", "LinkedIn Link")}
-                  <br />
-                  {this.renderInput("instagramLink", "Instagram Link")}
-                  <br />
-                  {this.renderInput("twitterLink", "Twitter Link")}
-                  <br />
-                  {this.renderButton("Submit", "secondary", "contained")}
-                </form>
+                <div>
+                  <img src={brandLogo} alt="logo" className={classes.image} />
+                </div>
+              </Grid>
+            </Box>
+          </Grid>
+          <Grid item xs={12} lg={6} sm={12}>
+            <Box>
+              <Grid
+                container
+                justify="center"
+                alignItems="center"
+                direction="column"
+              >
                 <br />
-              </div>
-            </Grid>
-          </Box>
+                <div className={classes.root}>
+                  <List className={classes.list}>
+                    <form onSubmit={this.handleSubmit}>
+                      <center>
+                        <Typography
+                          component="span"
+                          style={{ paddingTop: "10px" }}
+                          variant="body1"
+                          // color="primary"
+                        >
+                          Register yourself here
+                        </Typography>
+                      </center>
+                      {this.renderInput("firstName", "First Name")}
+                      <br />
+                      {this.renderInput("middleName", "Middle Name")}
+                      <br />
+                      {this.renderInput("lastName", "Last Name")}
+                      <br />
+                      {this.renderInput("username", "Username")}
+                      <br />
+                      {this.renderInput("email", "Email", "email")}
+                      <br />
+                      {this.renderSelection(
+                        "programmeApplied",
+                        "Program Applied for:  ",
+                        this.state.programmeApplied
+                      )}
+                      <br />
+                      {this.renderInput("contact", "Contact")}
+                      <br />
+                      {this.renderDate("dob", "Date of Birth:", "date")}
+                      <br />
+                      {this.renderInput(
+                        "lifeMembershipNumber",
+                        "Life Membership Number (If any)"
+                      )}
+                      <br />
+                      {this.renderInput(
+                        "residentialAddress",
+                        "Residential Address"
+                      )}
+                      <br />
+                      {this.renderInput(
+                        "residentialLandline",
+                        "Residential Landline"
+                      )}
+                      <br />
+                      {this.renderSelection("area", "Area: ", this.state.area)}
+                      <br />
+                      {this.renderSelection(
+                        "married",
+                        "Married: ",
+                        this.state.married
+                      )}
+                      <br />
+                      {this.renderSelection(
+                        "bloodGroup",
+                        "Blood Group: ",
+                        this.state.bloodGroup
+                      )}
+                      <br />
+                      {this.renderSelection(
+                        "industry",
+                        "Industry you belong to: ",
+                        this.state.industry
+                      )}
+                      <br />
+                      {this.renderInput("companyName", "Company Name")}
+                      <br />
+                      {this.renderInput("product", "Product/Service Lines")}
+                      <br />
+                      {this.renderInput("comapanyWebsite", "Comapany Website")}
+                      <br />
+                      {this.renderInput("landlineNumber", "Landline Number")}
+                      <br />
+                      {this.renderDate(
+                        "businessIncorporationDate",
+                        "Business Incorporation Date:",
+                        "date"
+                      )}
+                      <br />
+                      {this.renderInput("facebookLink", "Facebook Link")}
+                      <br />
+                      {this.renderInput("linkedinLink", "LinkedIn Link")}
+                      <br />
+                      {this.renderInput("instagramLink", "Instagram Link")}
+                      <br />
+                      {this.renderInput("twitterLink", "Twitter Link")}
+                      <br />
+                      {this.renderButton("Submit", "secondary", "contained")}
+                    </form>
+                  </List>
+                  <br />
+                </div>
+              </Grid>
+            </Box>
+          </Grid>
+          <Footer />
         </Grid>
-        <Footer />
-      </Grid>
+      </div>
     );
   }
 }

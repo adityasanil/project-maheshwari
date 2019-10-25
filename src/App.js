@@ -46,7 +46,10 @@ class App extends Component {
             />
             <Route
               path="/users/industry/:industryName"
-              component={IndustryUserList}
+              render={props => {
+                if (user === null) return <Redirect to="/login" />;
+                return <IndustryUserList {...props} />;
+              }}
             />
             <Route path="/users/profile/:id" component={SearchedUserProfile} />
             {/* <Route path="/users/:email" component={SearchedUserProfile} /> */}
