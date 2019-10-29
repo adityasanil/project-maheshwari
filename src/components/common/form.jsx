@@ -4,6 +4,7 @@ import Selection from "./select";
 import Button from "@material-ui/core/Button";
 import Joi from "joi-browser";
 import Date from "./date";
+import { TextField } from "@material-ui/core";
 
 class Form extends Component {
   state = {
@@ -54,7 +55,19 @@ class Form extends Component {
     this.setState({ data, errors });
   };
 
-  renderInput(name, label, type = "text") {
+  handleMyAccountDetailChange = ({ currentTarget: input }) => {
+    //const errors = { ...this.state.errors };
+    //const errorMessage = this.validateIndividualField(input);
+    //if (errorMessage) errors[input.name] = errorMessage;
+    //else delete errors[input.name];
+
+    const data = { ...this.state.data };
+    data[input.name] = input.value;
+
+    this.setState({ data });
+  };
+
+  renderInput(name, label, type = "text", variant = "standard") {
     const { data, errors } = this.state;
 
     return (
@@ -65,6 +78,7 @@ class Form extends Component {
         value={data[name]}
         onChange={this.handleChange}
         error={errors[name]}
+        variant={variant}
       />
     );
   }
@@ -109,6 +123,23 @@ class Form extends Component {
 
   renderParagraph(paragraphBody) {
     return <span>{paragraphBody}</span>;
+  }
+
+  renderPersonalDetailInput(name, type = "text") {
+    const { data } = this.state;
+
+    return (
+      <TextField
+        type={type}
+        name={name}
+        value={data[name]}
+        required={true}
+        onChange={this.handleMyAccountDetailChange}
+        //error={errors[name]}
+        variant="outlined"
+        fullWidth
+      />
+    );
   }
 }
 

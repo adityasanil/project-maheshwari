@@ -208,6 +208,9 @@ class Signup extends Form {
     // console.log(data);
     const response = await register(data);
     console.log(response);
+    window.alert(
+      "Data submitted Successfully !!\nNOTE: You cannot login until you recieve an approval from our team"
+    );
   };
 
   render() {
