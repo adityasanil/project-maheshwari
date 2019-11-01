@@ -15,7 +15,6 @@ import FacebookIcon from "@material-ui/icons/Facebook";
 import InstagramIcon from "@material-ui/icons/Instagram";
 import TwitterIcon from "@material-ui/icons/Twitter";
 import EmailIcon from "@material-ui/icons/AlternateEmail";
-import { loggedInUser } from "../services/getUsers";
 
 const useStyles = {
   card: {
@@ -39,7 +38,6 @@ const useStyles = {
     fontFamily: "Oranienbaum",
     fontSize: 22
   },
-
   pos: {
     marginBottom: 12
   },
@@ -47,35 +45,33 @@ const useStyles = {
   services: {
     marginBottom: 0
   },
-
   card2: {
     marginTop: 88,
     background: "#FAFAFA",
-    margin: 50
+    margin: 50,
+    "@media only screen and (max-width: 961px)": {
+      marginTop: "0px"
+    }
   },
-
   primaryText: {
     color: "rgb(54, 9, 9)",
     fontFamily: "Cinzel Decorative",
     fontWeight: "600"
   },
-
   seondaryText: {
     color: "#CD853F",
     fontFamily: "Oranienbaum",
     fontWeight: "600"
+    // fontSize: "12px"
   },
-
   avatar: {
     backgroundColor: "rgb(54, 9, 9)"
   },
-
   headings: {
     marginTop: 30,
     fontFamily: "Balthazar",
     fontSize: "30px"
   },
-
   business: {
     fontFamily: "Balthazar",
     marginTop: 30,
@@ -86,24 +82,12 @@ const useStyles = {
 };
 
 class UserProfile extends Component {
-  state = {
-    user: []
-  };
-
-  async componentDidMount() {
-    try {
-      const { data: user } = await loggedInUser();
-      this.setState({ user });
-    } catch (error) {}
-  }
-
   render() {
-    const { classes } = this.props;
-    const { user } = this.state;
+    const { classes, user } = this.props;
     return (
       <div>
         <Grid container>
-          <Grid item xs={12} lg={6}>
+          <Grid item xs={12} lg={6} md={6}>
             <Typography
               className={classes.business}
               variant="h5"
@@ -133,11 +117,11 @@ class UserProfile extends Component {
               </CardContent>
             </Card>
           </Grid>
-          <Grid item xs={12} lg={6}>
+          <Grid item xs={12} lg={6} md={6}>
             <Card className={classes.card2}>
               <CardContent>
                 <Grid container>
-                  <Grid item xs={12} lg={7}>
+                  <Grid item xs={12} lg={6}>
                     <ListItem>
                       <ListItemAvatar>
                         <Avatar className={classes.avatar}>
@@ -164,7 +148,7 @@ class UserProfile extends Component {
                       />
                     </ListItem>
                   </Grid>
-                  <Grid item xs={12} lg={5}>
+                  <Grid item xs={12} lg={6}>
                     <ListItem>
                       <ListItemAvatar>
                         <Avatar className={classes.avatar}>
@@ -195,7 +179,7 @@ class UserProfile extends Component {
                   </Grid>
                 </Grid>
                 <Grid container>
-                  <Grid item xs={12} lg={7}>
+                  <Grid item xs={12} lg={6}>
                     <ListItem>
                       <ListItemAvatar>
                         <Avatar className={classes.avatar}>
@@ -222,7 +206,7 @@ class UserProfile extends Component {
                       />
                     </ListItem>
                   </Grid>
-                  <Grid item xs={12} lg={5}>
+                  <Grid item xs={12} lg={6}>
                     <ListItem>
                       <ListItemAvatar>
                         <Avatar className={classes.avatar}>
@@ -264,7 +248,7 @@ class UserProfile extends Component {
               Social Media Connect:
             </Typography>
             <Grid container>
-              <Grid item xs={12} lg={7}>
+              <Grid item xs={4} lg={7}>
                 <ListItem>
                   <ListItemAvatar>
                     <FacebookIcon />
@@ -272,12 +256,18 @@ class UserProfile extends Component {
                   <ListItemText
                     primary="Account Name"
                     secondary={
-                      <a href={user.facebookLink}>{user.facebookLink}</a>
+                      <a
+                        href={"http://" + user.facebookLink}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        {user.facebookLink}
+                      </a>
                     }
                   />
                 </ListItem>
               </Grid>
-              <Grid item xs={12} lg={5}>
+              <Grid item xs={4} lg={5}>
                 <ListItem>
                   <ListItemAvatar>
                     <InstagramIcon />
@@ -285,14 +275,20 @@ class UserProfile extends Component {
                   <ListItemText
                     primary="Account Name"
                     secondary={
-                      <a href={user.instagramLink}>{user.instagramLink}</a>
+                      <a
+                        href={"http://" + user.instagramLink}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        {user.instagramLink}
+                      </a>
                     }
                   />
                 </ListItem>
               </Grid>
             </Grid>
             <Grid container>
-              <Grid item xs={12} lg={7}>
+              <Grid item xs={4} lg={7}>
                 <ListItem>
                   <ListItemAvatar>
                     <LinkedInIcon />
@@ -300,12 +296,18 @@ class UserProfile extends Component {
                   <ListItemText
                     primary="Account Name"
                     secondary={
-                      <a href={user.linkedinLink}>{user.linkedinLink}</a>
+                      <a
+                        href={"http://" + user.linkedinLink}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        {user.linkedinLink}
+                      </a>
                     }
                   />
                 </ListItem>
               </Grid>
-              <Grid item xs={12} lg={5}>
+              <Grid item xs={4} lg={5}>
                 <ListItem>
                   <ListItemAvatar>
                     <TwitterIcon />
@@ -313,7 +315,13 @@ class UserProfile extends Component {
                   <ListItemText
                     primary="Account Name"
                     secondary={
-                      <a href={user.twitterLink}>{user.twitterLink}</a>
+                      <a
+                        href={"http://" + user.twitterLink}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        {user.twitterLink}
+                      </a>
                     }
                   />
                 </ListItem>

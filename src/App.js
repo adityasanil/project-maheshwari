@@ -5,8 +5,6 @@ import Signup from "./components/signUp";
 import Navbar from "./components/navbar";
 import Login from "./components/login";
 import ForgotPassword from "./components/forgotPassword";
-import Dashboard from "./components/dashboard";
-import UserProfile from "./components/userProfile";
 import Logout from "./components/logout";
 import auth from "./services/authService";
 import MyAccount from "./components/myAccount";
@@ -14,6 +12,7 @@ import Admin from "./components/adminPanel";
 import SearchPage from "./components/searchPage";
 import SearchedUserProfile from "./components/searchedUserProfile";
 import IndustryUserList from "./components/industryUserList";
+import Profile from "./components/profile";
 
 class App extends Component {
   state = {};
@@ -52,17 +51,9 @@ class App extends Component {
               }}
             />
             <Route path="/users/profile/:id" component={SearchedUserProfile} />
-            {/* <Route path="/users/:email" component={SearchedUserProfile} /> */}
             <Route path="/myAccount" component={MyAccount} />
-            <Route path="/userProfile" component={UserProfile} />
+            <Route path="/profile" component={Profile} />
             <Route path="/login" component={Login} />
-            <Route
-              path="/dashboard"
-              render={props => {
-                if (user === null) return <Redirect to="/login" />;
-                return <Dashboard {...props} />;
-              }}
-            />
             <Route path="/forgotPassword" component={ForgotPassword} />
             <Route path="/logout" component={Logout} />
             <Route path="/signup" component={Signup} />

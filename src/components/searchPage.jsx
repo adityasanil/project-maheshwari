@@ -35,7 +35,7 @@ class SearchPage extends Component {
     } catch (error) {}
   };
 
-  //Do not delete this commented function
+  //Do not delete this function
 
   // searchQuery = async query => {
   //   try {

@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import UserProfile from "./userProfile";
-import { getSearchedUser } from "../services/getUsers";
+import { loggedInUser } from "../services/getUsers";
 
 class Profile extends Component {
   state = {
@@ -9,12 +9,10 @@ class Profile extends Component {
 
   async componentDidMount() {
     try {
-      const id = this.props.match.params.id;
-      const { data: user } = await getSearchedUser(id);
+      const { data: user } = await loggedInUser();
       this.setState({ user });
     } catch (error) {}
   }
-
   render() {
     return <UserProfile user={this.state.user} />;
   }

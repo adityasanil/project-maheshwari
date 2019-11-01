@@ -27,7 +27,6 @@ const Date = ({ name, label, value, onChange, error, type }) => {
         fullWidth
         variant="standard"
         margin="dense"
-        //label={label}
       />
       {error && <Card className={classes.cardStyle}>{error}</Card>}
     </div>

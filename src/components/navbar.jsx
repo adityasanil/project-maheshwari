@@ -10,7 +10,7 @@ import Menu from "@material-ui/core/Menu";
 import MenuIcon from "@material-ui/icons/Menu";
 import SearchIcon from "@material-ui/icons/Search";
 import AccountCircle from "@material-ui/icons/AccountCircle";
-import MailIcon from "@material-ui/icons/Mail";
+// import MailIcon from "@material-ui/icons/Mail";
 import SupervisorAccountIcon from "@material-ui/icons/SupervisorAccount";
 import Button from "@material-ui/core/Button";
 import { Link } from "react-router-dom";
@@ -113,7 +113,7 @@ const PrimarySearchAppBar = ({ user }) => {
     >
       {user && (
         <MenuItem onClick={handleMenuClose}>
-          <Link to="/userProfile" className={classes.profileTextDeco}>
+          <Link to="/profile" className={classes.profileTextDeco}>
             Profile: {user.username}
           </Link>
         </MenuItem>
@@ -181,14 +181,14 @@ const PrimarySearchAppBar = ({ user }) => {
               </Link>
             </MenuItem>
           )}
-          <MenuItem>
+          {/* <MenuItem>
             <IconButton aria-label="show 4 new mails" color="inherit">
               <Badge badgeContent={4} color="secondary">
                 <MailIcon />
               </Badge>
             </IconButton>
             <p>Messages</p>
-          </MenuItem>
+          </MenuItem> */}
           <MenuItem onClick={handleProfileMenuOpen}>
             <IconButton
               aria-label="account of current user"
@@ -254,11 +254,11 @@ const PrimarySearchAppBar = ({ user }) => {
                   </Link>
                 </IconButton>
               </div>
-              <IconButton aria-label="show 4 new mails" color="inherit">
+              {/* <IconButton aria-label="show 4 new mails" color="inherit">
                 <Badge badgeContent={4} color="secondary">
                   <MailIcon />
                 </Badge>
-              </IconButton>
+              </IconButton> */}
 
               {user.isAdmin && (
                 <IconButton aria-label="" color="inherit">

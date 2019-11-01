@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Grid, Box, Paper } from "@material-ui/core";
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 import { Typography, Button } from "@material-ui/core";
 import homeImage from "../assets/images/image.png";
 import { withStyles } from "@material-ui/core/styles";
@@ -25,18 +25,15 @@ const styles = {
       marginTop: "5px",
       fontSize: "30px"
     }
-    //color: "rgb(255, 81, 0)"
   },
 
   image: {
     width: "100%",
-    //maxWidth: "550px",
     height: "auto",
     marginTop: 30,
     "@media only screen and (max-width: 600px)": {
       width: "98%"
     }
-    // alignItems: 'center'
   },
 
   heading: {
@@ -58,8 +55,6 @@ const styles = {
 
   paperBackground: {
     padding: "10px"
-    //marginLeft: '50px',
-    //marginRight: '50px'
   },
 
   paper: {
@@ -162,15 +157,13 @@ class Home extends Component {
                 egestas ac. Integer interdum mollis viverra. Nunc id congue ex.
               </Typography>
 
-              {/* <Box textAlign="center"> */}
-              <div>
+              {/* {<div>
                 <Link to="/signUp" className={classes.signUp}>
                   <Typography variant="body2" className={classes.paragraph}>
                     Want to be a member?
                   </Typography>
                 </Link>
-              </div>
-              {/* </Box> */}
+              </div>} */}
               <br />
             </Box>
           </Paper>

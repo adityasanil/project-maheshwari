@@ -204,6 +204,7 @@ class Signup extends Form {
 
   doSubmit = async () => {
     //Submit data to Server
+
     const { data } = this.state;
     // console.log(data);
     const response = await register(data);
@@ -255,7 +256,6 @@ class Signup extends Form {
                           component="span"
                           style={{ paddingTop: "10px" }}
                           variant="body1"
-                          // color="primary"
                         >
                           Register yourself here
                         </Typography>

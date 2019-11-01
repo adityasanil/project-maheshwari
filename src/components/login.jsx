@@ -84,7 +84,6 @@ class Login extends Form {
             <img src={brandLogo} alt="logo" className={classes.image} />
           </div>
           <div className={classes.heading}>
-            {/* {this.renderParagraph("Welcome to our platform")} */}
             <center>
               <Typography
                 style={{ padding: "5px", fontFamily: "Jura" }}
@@ -93,13 +92,6 @@ class Login extends Form {
               >
                 Login
               </Typography>
-              {/* <Typography
-                component="div"
-                className={classes.message}
-                variant="body1"
-              >
-                You can login only after approval is sent on your email
-              </Typography> */}
             </center>
           </div>
           <Box mb={1}>

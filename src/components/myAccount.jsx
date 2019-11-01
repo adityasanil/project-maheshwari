@@ -98,7 +98,7 @@ class MyAccount extends Form {
         "http://localhost:3001/myAccount/" + this.state.data._id,
         data
       );
-      toast.success("Updated successfully");
+      toast.info("Updated successfully");
       console.log(result);
     } catch (error) {
       toast.error("Update failed!");
@@ -167,24 +167,7 @@ class MyAccount extends Form {
                       {this.renderButton("Save", "secondary", "contained")}
                     </TableCell>
                   </TableRow>
-                  {/* <TableRow>
-                    <TableCell align="justify">Username</TableCell>
-                    <TableCell align="justify">
-                      {this.renderPersonalDetailInput("username", "Username")}
-                    </TableCell>
-                    <TableCell align="justify">
-                      {this.renderButton("Save", "secondary", "contained")}
-                    </TableCell>
-                  </TableRow> */}
-                  {/* <TableRow>
-                    <TableCell align="justify">Email</TableCell>
-                    <TableCell align="justify">
-                      {this.renderPersonalDetailInput("email", "Email")}
-                    </TableCell>
-                    <TableCell align="justify">
-                      {this.renderButton("Save", "secondary", "contained")}
-                    </TableCell>
-                  </TableRow> */}
+
                   <TableRow>
                     <TableCell align="justify">Program Applied</TableCell>
                     <TableCell align="justify">
