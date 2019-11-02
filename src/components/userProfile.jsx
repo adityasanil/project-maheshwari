@@ -1,11 +1,10 @@
 import React, { Component } from "react";
-import { CardContent, Grid, Container } from "@material-ui/core";
+import { CardContent, Grid, Container, Divider } from "@material-ui/core";
 import { withStyles } from "@material-ui/core/styles";
 import Card from "@material-ui/core/Card";
 import Typography from "@material-ui/core/Typography";
 import ListItem from "@material-ui/core/ListItem";
 import ListItemText from "@material-ui/core/ListItemText";
-import ListItemAvatar from "@material-ui/core/ListItemAvatar";
 import Avatar from "@material-ui/core/Avatar";
 import ProprietorIcon from "@material-ui/icons/AccountBoxRounded";
 import AddressIcon from "@material-ui/icons/HomeWork";
@@ -18,25 +17,37 @@ import EmailIcon from "@material-ui/icons/AlternateEmail";
 
 const useStyles = {
   card: {
-    minWidth: 150,
+    minWidth: 200,
     margin: 50,
     marginTop: 20,
     background: "rgb(54, 9, 9)",
-    color: "#CD853F"
+    minHeight: 220,
+    color: "#CD853F",
+    "@media only screen and (max-width: 600px)": {
+      margin: 10,
+      minHeight: 150
+    }
   },
 
   title: {
     fontSize: "38px",
     fontFamily: "Cinzel Decorative",
     align: "justify",
-    padding: 8,
-    paddingBottom: 25
+    padding: 28,
+    paddingBottom: 0,
+    "@media only screen and (max-width: 600px)": {
+      marginTop: 10,
+      fontSize: "20px"
+    }
   },
 
   subTitle: {
-    paddingBottom: 40,
+    paddingBottom: 20,
     fontFamily: "Oranienbaum",
-    fontSize: 22
+    fontSize: "22px",
+    "@media only screen and (max-width: 600px)": {
+      fontSize: "18px"
+    }
   },
   pos: {
     marginBottom: 12
@@ -46,38 +57,116 @@ const useStyles = {
     marginBottom: 0
   },
   card2: {
-    marginTop: 88,
-    background: "#FAFAFA",
+    minWidth: 200,
     margin: 50,
-    "@media only screen and (max-width: 961px)": {
-      marginTop: "0px"
+    marginTop: 20,
+    minHeight: 220,
+    background: "#eeeeee",
+    "@media only screen and (max-width: 600px)": {
+      margin: 10,
+      padding: 0,
+      minHeight: 150,
+      marginBottom: 15
     }
   },
+
   primaryText: {
     color: "rgb(54, 9, 9)",
     fontFamily: "Cinzel Decorative",
-    fontWeight: "600"
+    fontWeight: "600",
+
+    "@media only screen and (max-width: 600px)": {
+      fontSize: "10px"
+    }
   },
   seondaryText: {
     color: "#CD853F",
     fontFamily: "Oranienbaum",
-    fontWeight: "600"
-    // fontSize: "12px"
+    fontWeight: "600",
+    "@media only screen and (max-width: 600px)": {
+      fontSize: "12px"
+    }
+  },
+
+  cardIcon: {
+    "@media only screen and (max-width: 600px)": {
+      fontSize: "20px"
+    }
   },
   avatar: {
-    backgroundColor: "rgb(54, 9, 9)"
+    backgroundColor: "rgb(54, 9, 9)",
+    marginRight: 15,
+    "@media only screen and (max-width: 600px)": {
+      height: 30,
+      width: 30,
+      marginRight: 5
+    }
   },
   headings: {
-    marginTop: 30,
+    marginTop: 5,
     fontFamily: "Balthazar",
-    fontSize: "30px"
+    fontSize: "30px",
+    "@media only screen and (max-width: 600px)": {
+      fontSize: "25px"
+    }
   },
   business: {
     fontFamily: "Balthazar",
     marginTop: 30,
     marginBottom: 0,
     fontSize: "30px",
-    marginLeft: 30
+    marginLeft: 34,
+    "@media only screen and (max-width: 600px)": {
+      marginLeft: 10,
+      fontSize: "25px",
+      marginTop: 15
+    }
+  },
+
+  smIcon: {
+    fontSize: "30px",
+    "@media only screen and (max-width: 600px)": {
+      fontSize: "20px"
+    }
+  },
+
+  smName: {
+    fontWeight: "bold",
+    fontFamily: "Oranienbaum",
+    fontSize: "18px",
+    "@media only screen and (max-width: 600px)": {
+      fontSize: "15px"
+    }
+  },
+
+  smLink: {
+    textDecoration: "none",
+    fontsize: "12px",
+    "@media only screen and (max-width: 600px)": {
+      fontSize: "12px"
+    }
+  },
+
+  product: {
+    marginLeft: "15px",
+    fontSize: "20px",
+    "@media only screen and (max-width: 600px)": {
+      marginLeft: 0
+    }
+  },
+
+  cardContent: {
+    "@media only screen and (max-width: 600px)": {
+      paddingLeft: 20,
+      margin: 0
+    }
+  },
+
+  listItem: {
+    "@media only screen and (max-width: 600px)": {
+      padding: 0,
+      margin: 0
+    }
   }
 };
 
@@ -86,16 +175,16 @@ class UserProfile extends Component {
     const { classes, user } = this.props;
     return (
       <div>
+        <Typography
+          className={classes.business}
+          variant="h5"
+          align="left"
+          gutterBottom
+        >
+          Business Card:
+        </Typography>
         <Grid container>
           <Grid item xs={12} lg={6} md={6}>
-            <Typography
-              className={classes.business}
-              variant="h5"
-              align="left"
-              gutterBottom
-            >
-              Business Card:
-            </Typography>
             <Card className={classes.card}>
               <CardContent>
                 <Typography
@@ -119,15 +208,13 @@ class UserProfile extends Component {
           </Grid>
           <Grid item xs={12} lg={6} md={6}>
             <Card className={classes.card2}>
-              <CardContent>
+              <CardContent className={classes.cardContent}>
                 <Grid container>
-                  <Grid item xs={12} lg={6}>
-                    <ListItem>
-                      <ListItemAvatar>
-                        <Avatar className={classes.avatar}>
-                          <ProprietorIcon />
-                        </Avatar>
-                      </ListItemAvatar>
+                  <Grid item xs={6} lg={6}>
+                    <ListItem className={classes.listItem}>
+                      <Avatar className={classes.avatar}>
+                        <ProprietorIcon className={classes.cardIcon} />
+                      </Avatar>
                       <ListItemText
                         primary={
                           <Typography
@@ -148,13 +235,11 @@ class UserProfile extends Component {
                       />
                     </ListItem>
                   </Grid>
-                  <Grid item xs={12} lg={6}>
-                    <ListItem>
-                      <ListItemAvatar>
-                        <Avatar className={classes.avatar}>
-                          <AddressIcon />
-                        </Avatar>
-                      </ListItemAvatar>
+                  <Grid item xs={6} lg={6}>
+                    <ListItem className={classes.listItem}>
+                      <Avatar className={classes.avatar}>
+                        <AddressIcon className={classes.cardIcon} />
+                      </Avatar>
                       <ListItemText
                         primary={
                           <Typography
@@ -165,27 +250,23 @@ class UserProfile extends Component {
                           </Typography>
                         }
                         secondary={
-                          <div>
-                            <div className={classes.seondaryText}>
-                              {user.residentialAddress}
-                            </div>
-                            <div className={classes.seondaryText}>
-                              {user.residentialAddress}
-                            </div>
-                          </div>
+                          <Typography
+                            className={classes.seondaryText}
+                            display="block"
+                          >
+                            {user.residentialAddress}
+                          </Typography>
                         }
                       />
                     </ListItem>
                   </Grid>
                 </Grid>
                 <Grid container>
-                  <Grid item xs={12} lg={6}>
-                    <ListItem>
-                      <ListItemAvatar>
-                        <Avatar className={classes.avatar}>
-                          <ContactIcon />
-                        </Avatar>
-                      </ListItemAvatar>
+                  <Grid item xs={6} lg={6}>
+                    <ListItem className={classes.listItem}>
+                      <Avatar className={classes.avatar}>
+                        <ContactIcon className={classes.cardIcon} />
+                      </Avatar>
                       <ListItemText
                         primary={
                           <Typography
@@ -206,13 +287,11 @@ class UserProfile extends Component {
                       />
                     </ListItem>
                   </Grid>
-                  <Grid item xs={12} lg={6}>
-                    <ListItem>
-                      <ListItemAvatar>
-                        <Avatar className={classes.avatar}>
-                          <EmailIcon />
-                        </Avatar>
-                      </ListItemAvatar>
+                  <Grid item xs={6} lg={6}>
+                    <ListItem className={classes.listItem}>
+                      <Avatar className={classes.avatar}>
+                        <EmailIcon className={classes.cardIcon} />
+                      </Avatar>
                       <ListItemText
                         primary={
                           <Typography
@@ -238,28 +317,36 @@ class UserProfile extends Component {
             </Card>
           </Grid>
           <Container>
+            <Divider />
             <Typography variant="h5" className={classes.headings}>
               Services Offered:
             </Typography>
-            <Typography variant="body1">{user.product}</Typography>
+            <Typography variant="body1" className={classes.product}>
+              {user.product}
+            </Typography>
             <br />
-            <br />
+            <Divider />
             <Typography variant="h5" className={classes.headings}>
               Social Media Connect:
             </Typography>
             <Grid container>
-              <Grid item xs={4} lg={7}>
-                <ListItem>
-                  <ListItemAvatar>
-                    <FacebookIcon />
-                  </ListItemAvatar>
+              <Grid item xs={6} lg={3}>
+                <ListItem className={classes.listItem}>
+                  <Avatar className={classes.avatar}>
+                    <FacebookIcon className={classes.smIcon} />
+                  </Avatar>
                   <ListItemText
-                    primary="Account Name"
+                    primary={
+                      <Typography variant="body1" className={classes.smName}>
+                        Facebook:
+                      </Typography>
+                    }
                     secondary={
                       <a
                         href={"http://" + user.facebookLink}
                         target="_blank"
                         rel="noopener noreferrer"
+                        className={classes.smLink}
                       >
                         {user.facebookLink}
                       </a>
@@ -267,18 +354,23 @@ class UserProfile extends Component {
                   />
                 </ListItem>
               </Grid>
-              <Grid item xs={4} lg={5}>
-                <ListItem>
-                  <ListItemAvatar>
-                    <InstagramIcon />
-                  </ListItemAvatar>
+              <Grid item xs={6} lg={3}>
+                <ListItem className={classes.listItem}>
+                  <Avatar className={classes.avatar}>
+                    <InstagramIcon className={classes.smIcon} />
+                  </Avatar>
                   <ListItemText
-                    primary="Account Name"
+                    primary={
+                      <Typography variant="body1" className={classes.smName}>
+                        Instagram:
+                      </Typography>
+                    }
                     secondary={
                       <a
                         href={"http://" + user.instagramLink}
                         target="_blank"
                         rel="noopener noreferrer"
+                        className={classes.smLink}
                       >
                         {user.instagramLink}
                       </a>
@@ -286,20 +378,23 @@ class UserProfile extends Component {
                   />
                 </ListItem>
               </Grid>
-            </Grid>
-            <Grid container>
-              <Grid item xs={4} lg={7}>
-                <ListItem>
-                  <ListItemAvatar>
-                    <LinkedInIcon />
-                  </ListItemAvatar>
+              <Grid item xs={6} lg={3}>
+                <ListItem className={classes.listItem}>
+                  <Avatar className={classes.avatar}>
+                    <LinkedInIcon className={classes.smIcon} />
+                  </Avatar>
                   <ListItemText
-                    primary="Account Name"
+                    primary={
+                      <Typography variant="body1" className={classes.smName}>
+                        LinkedIn:
+                      </Typography>
+                    }
                     secondary={
                       <a
                         href={"http://" + user.linkedinLink}
                         target="_blank"
                         rel="noopener noreferrer"
+                        className={classes.smLink}
                       >
                         {user.linkedinLink}
                       </a>
@@ -307,18 +402,23 @@ class UserProfile extends Component {
                   />
                 </ListItem>
               </Grid>
-              <Grid item xs={4} lg={5}>
-                <ListItem>
-                  <ListItemAvatar>
-                    <TwitterIcon />
-                  </ListItemAvatar>
+              <Grid item xs={6} lg={3}>
+                <ListItem className={classes.listItem}>
+                  <Avatar className={classes.avatar}>
+                    <TwitterIcon className={classes.smIcon} />
+                  </Avatar>
                   <ListItemText
-                    primary="Account Name"
+                    primary={
+                      <Typography variant="body1" className={classes.smName}>
+                        Twitter:
+                      </Typography>
+                    }
                     secondary={
                       <a
                         href={"http://" + user.twitterLink}
                         target="_blank"
                         rel="noopener noreferrer"
+                        className={classes.smLink}
                       >
                         {user.twitterLink}
                       </a>
