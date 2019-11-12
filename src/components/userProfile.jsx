@@ -325,6 +325,7 @@ class UserProfile extends Component {
               {user.product}
             </Typography>
             <br />
+            <br />
             <Divider />
             <Typography variant="h5" className={classes.headings}>
               Social Media Connect:

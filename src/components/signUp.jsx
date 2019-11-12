@@ -30,7 +30,7 @@ const styles = {
   },
 
   list: {
-    maxHeight: 457,
+    maxHeight: 600,
     overflow: "auto",
     "@media only screen and (max-width: 600px)": {
       maxHeight: "100%"
@@ -210,8 +210,9 @@ class Signup extends Form {
     const response = await register(data);
     console.log(response);
     window.alert(
-      "Data submitted Successfully !!\nNOTE: You cannot login until you recieve an approval from our team"
+      "Data submitted Successfully !!\n Please check your mail box for login credentials."
     );
+    this.props.history.push("/login");
   };
 
   render() {
